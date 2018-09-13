@@ -1,0 +1,224 @@
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #f44336;
+    overflow: hidden;
+	width:100%;
+	display:inline-block;
+	position:fixed;
+	top:0;
+	left:0;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+	font-family: "helvetica";
+	width: 33.33%;
+	padding:8px 0px;
+	border:none;
+	display:block;
+	outline:0;
+	transition: background-color 1s;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #802517;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #ddd;
+    color: white;
+}
+
+.container {
+	padding:0.01em 16px;
+}
+
+.ul{
+	list-style-type:none;
+	padding:0;
+	margin:0
+}
+
+.ul li{
+	padding:8px 16px;
+	border-bottom:1px solid #ddd
+}
+
+.ul li:last-child{
+	border-bottom:none;
+}
+
+.card {
+	box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
+}
+
+.bar {
+	width:100%;
+	overflow:hidden;
+	display:inline-block;
+}
+
+.bar_item {
+	padding:8px 16px;
+	float:left;
+	width:auto;
+	border:none;
+	display:block;
+	outline:0;
+}
+
+.large {
+	font-size:18px;
+}
+
+.image {
+	width:85px;
+	border-radius:50%
+}
+
+.remove {
+	border:none;
+	display:inline-block;
+	padding:8px 16px;
+	vertical-align:middle;
+	overflow:hidden;
+	text-decoration:none;
+	text-align:center;
+	cursor:pointer;
+	white-space:nowrap;
+	color:#000;
+	background-color:#fff;
+	font-size:24px;
+	position: fixed;
+	right: 24px;
+	white-space:normal;
+}
+
+.hover_button{
+	right: 1.5%;
+	bottom: 1.5%;
+	position:fixed;
+	border-radius:8px;
+	display:block;
+	color: #f2f2f2;
+	background-color: #f44336;
+	height: 5%;
+	width: 90px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+	top: 10%;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 10%; opacity: 1}
+}
+
+/* The Close Button */
+.close {
+    color: #f2f2f2;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #f44336;
+    color: white;
+}
+
+/*Definere font og placering for labels på siden.*/
+.label {
+	font-size: 20px;
+	font-family: "helvetica";
+	margin-left: 8%;
+}
+
+/*Definere input box design, størrelse og placering.*/
+.input {
+		padding:8px;
+		display:block;
+		border:none;
+		border-bottom:1px solid #ccc;
+		width:80.3333333335%;
+		font-size: 16px;
+		margin-top: 5px;
+		margin-left: 8%;
+}
+
+/*Definere knappens design, udseende og placering.*/
+.button {
+	color:#fff;
+	background-color:#f44336;
+	border:none;
+	display:inline-block;
+	padding:8px 16px;
+	vertical-align:middle;
+	text-align:center;
+	cursor:pointer;
+	border-radius:8px;
+	transition: font-size 2s;
+	font-size: 30px;
+	width: 83.3333333335%;
+	margin-top: 5px;
+	margin-left: 8%;
+	transition: background-color 1s;
+}
+
+/*Definere knappens effekt når man holder hen over den.*/
+.button:hover {
+	background-color:#802517;
+}
+
+/*Definere knappens effekt når der trykkes på den.*/
+.button:active {
+	transform: translateY(1px);
+}
+
+.radio_btn {
+	margin-left: 8%;
+}
