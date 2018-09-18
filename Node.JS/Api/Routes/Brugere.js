@@ -19,7 +19,7 @@ function getConnection() {
 }
 
 //håndtere anmodninger til /Bruger
-router.get("/Bruger", (req, res) => {
+router.get("/Brugere", (req, res) => {
 
     const queryString = "SELECT * from Brugere"
     getConnection().query(queryString, (err, rows, fields) => {
@@ -33,7 +33,7 @@ router.get("/Bruger", (req, res) => {
 })
 
 //håndtere anmodninger til /Bruger/ID
-router.get("/Bruger/:ID", (req, res) => {
+router.get("/Brugere/:ID", (req, res) => {
     console.log("henter bruger med brugernavn: " + req.params.ID)
 
     const OrdreID = req.params.ID
@@ -49,7 +49,7 @@ router.get("/Bruger/:ID", (req, res) => {
 })
 
 //håndtere anmodninger til /Bruger_opret
-router.post("/Bruger_opret", (req, res) => {
+router.post("/Brugere_opret", (req, res) => {
     console.log("prøver at oprette bruger")
 
     const navn = req.body.Navn
