@@ -28,10 +28,10 @@ app.use((req, res, next) => {
 //Ruter der håndtere anmodninger
 const OrdreRouter = require('./Api/Routes/Ordre')
 app.use(OrdreRouter)
-const OrdreRouter = require('./Api/Routes/Pcer')
-app.use(OrdreRouter)
-const OrdreRouter = require('./Api/Routes/Brugere')
-app.use(OrdreRouter)
+const PCRouter = require('./Api/Routes/Pcer')
+app.use(PCRouter)
+const BrugerRouter = require('./Api/Routes/Brugere')
+app.use(BrugerRouter)
 
 
 //fejl håndtering hvis der indtastes en adresse der ikke findes
