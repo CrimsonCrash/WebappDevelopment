@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 //Ruter der håndtere anmodninger
 const OrdreRouter = require('./Api/Routes/Ordre')
 app.use(OrdreRouter)
-const PCRouter = require('./Api/Routes/Pcer')
+const PCRouter = require('./Api/Routes/PCer')
 app.use(PCRouter)
 const BrugerRouter = require('./Api/Routes/Brugere')
 app.use(BrugerRouter)
