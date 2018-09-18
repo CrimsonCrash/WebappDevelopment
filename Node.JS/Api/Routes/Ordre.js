@@ -50,7 +50,7 @@ router.get("/Ordre", (req, res) => {
 
 //håndtere anmodninger til /Ordre_opret
 router.post("/Ordre_opret", (req, res) => {
-    console.log("prøver at oprette bruger")
+    console.log("prøver at oprette ordre")
 
     const navn = req.body.Navn
     const email = req.body.Email
