@@ -57,12 +57,12 @@ router.post("/Ordre_opret", (req, res) => {
     const reparation = req.body.Reparation
     const reparation_txt = req.body.Reparation_txt
     const reservedele = req.body.Reservedele
-    const reservedele_txt = Req.body.Reservedele_txt
+    const reservedele_txt = req.body.Reservedele_txt
     const os = req.body.OS
     const salg = req.body.Salg
     const skrottet = req.body.Skrottet
 
-    const queryString = "Insert into PCer (Maerke, Model, Reparation, Reparation_txt, Reservedele, Reservedele_txt, OS, Salg, Skrottet) VALUES ('?', '?', ?, '?', ?, '?', '?', ?, ?)"
+    const queryString = "Insert into PCer (Maerke, Model, Reparation, Reparation_txt, Reservedele, Reservedele_txt, OS, Salg, Skrottet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     getConnection().query(queryString, [maerke, model, reparation, reparation_txt, reservedele, reservedele_txt, os, salg, skrottet], (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte pc" + err)
@@ -71,7 +71,7 @@ router.post("/Ordre_opret", (req, res) => {
         }
         
         console.log("Indsatte pc: ", results.insertid);
-        res.end()
+        res.redirect('http://192.168.4.240/PC.html');
     })
 })
 

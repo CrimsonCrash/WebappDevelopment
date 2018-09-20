@@ -57,9 +57,9 @@ router.post("/Brugere_opret", (req, res) => {
     const adgangskode = req.body.Adgangskode
     const email = req.body.Email
     const adresse = req.body.Adresse
-    const bruger_type = Req.body.Bruger_type
+    const bruger_type = req.body.Bruger_type
 
-    const queryString = "Insert into Brugere (Navn, Brugernavn, Adgangskode, Email, Adresse, Bruger_type) VALUES ('?', '?', '?', '?', '?', ?)"
+    const queryString = "Insert into Brugere (Navn, Brugernavn, Adgangskode, Email, Adresse, Bruger_type) VALUES (?, ?, ?, ?, ?, ?)"
     getConnection().query(queryString, [maerke, model, reparation, reparation_txt, reservedele, reservedele_txt, os, salg, skrottet], (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte bruger" + err)
@@ -68,7 +68,7 @@ router.post("/Brugere_opret", (req, res) => {
         }
         
         console.log("Indsatte bruger: ", results.insertid);
-        res.end()
+        res.redirect('http://192.168.4.240/Bruger.html');
     })
 })
 

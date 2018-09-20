@@ -52,7 +52,7 @@
 			<h2>Opret</h2>
 		</div>
 		<div>
-			<form>
+			<form action="http://192.168.4.240:3000/Ordre_opret" method="POST">
 				<p><label class="label">Navn</label>
 				<input name="Navn" type="text" class="input" required></p>
 				<p><label class="label">Email</label>
@@ -67,6 +67,8 @@
 				<input name="Maerke" type="text" class="input" required></p>
 				<p><label class="label">PC_ID på solgt pc</label>
 				<input name="PC_ID" type="text" class="input"></p>
+				<p><label class="label">Ansat</label>
+				<input name="Ansat" type="text" class="input"></p>
 				<p>
 				<button class="button" type="submit" value="Submit">Opret Ordre</button></p>
 			</form>
