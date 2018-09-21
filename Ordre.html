@@ -6,6 +6,8 @@
 <!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens skærm størrelse-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="Ordre_PC.css">
+<!--Tilføjer referencer til javascript filer, heriblandt googles jquery fil-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="Ordre.js"></script>
 <link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
 <link rel="icon" href="Nyan.ico" type="image/x-icon">
@@ -26,10 +28,8 @@
 <br>
 
 <!--tabel-->
-<div id="tabel" class="responsiv">
-<table id='tabel' class='table'><tr class='table_head'><th>Ordre-id</th><th>Navn</th><th>Email</th><th>Tlf</th><th>Adresse</th><th>Model</th><th>Mærke</th><th>PCID</th><th>ansat</th><th>Status</th></tr>
+<div id="tabeldiv" class="responsiv">
 
-</table>
 <div>
 
 <!--knappen i bunden af siden, som indeholder en drop down menu.-->
@@ -52,7 +52,7 @@
 			<h2>Opret</h2>
 		</div>
 		<div>
-			<form action="http://192.168.4.240:3000/Ordre_opret" method="POST">
+			<form action="http://192.168.4.246:3000/Ordre_opret" method="POST">
 				<p><label class="label">Navn</label>
 				<input name="Navn" type="text" class="input" required></p>
 				<p><label class="label">Email</label>
@@ -66,11 +66,11 @@
 				<p><label class="label">Mærke</label>
 				<input name="Maerke" type="text" class="input" required></p>
 				<p><label class="label">PC_ID på solgt pc</label>
-				<input name="PC_ID" type="text" class="input"></p>
+				<input id="PC_ID" name="PC_ID" type="text" class="input"></p>
 				<p><label class="label">Ansat</label>
 				<input name="Ansat" type="text" class="input"></p>
 				<p>
-				<button class="button" type="submit" value="Submit">Opret Ordre</button></p>
+				<button onclick="pc_ID()" class="button" type="submit" value="Submit">Opret Ordre</button></p>
 			</form>
 		</div>
 	</div>

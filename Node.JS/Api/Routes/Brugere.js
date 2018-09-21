@@ -21,7 +21,7 @@ function getConnection() {
 //håndtere anmodninger til /Bruger
 router.get("/Brugere", (req, res) => {
 
-    const queryString = "SELECT * from Brugere"
+    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere"
     getConnection().query(queryString, (err, rows, fields) => {
         if (err) {
             console.log("Fejlede i at hente Brugere" + err)
@@ -37,7 +37,7 @@ router.get("/Brugere/:ID", (req, res) => {
     console.log("henter bruger med brugernavn: " + req.params.ID)
 
     const OrdreID = req.params.ID
-    const queryString = "SELECT * from Brugere WHERE Brugernavn = ?"
+    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn = ?"
     getConnection().query(queryString, [OrdreID], (err, rows, fields) => {
         if (err) {
             console.log("Fejlede i at hente Bruger" + err)

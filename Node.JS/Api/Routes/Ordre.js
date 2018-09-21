@@ -58,8 +58,17 @@ router.post("/Ordre_opret", (req, res) => {
     const adresse = req.body.Adresse
     const model = req.body.Model
     const maerke = req.body.Maerke
-    const pc_id = req.body.PC_ID
+    //const pc_id = req.body.PC_ID
     const ansat = req.body.Ansat
+
+
+    if (!req.body.PC_ID) {
+        var pc_id = null;
+        return
+    } else {
+        var pc_id = req.body.PC_ID;
+    }
+
 
     const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, pc_id, ansat], (err, results, fields) => {
