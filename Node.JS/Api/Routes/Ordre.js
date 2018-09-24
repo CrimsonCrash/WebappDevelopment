@@ -63,15 +63,8 @@ router.post("/Ordre_opret", (req, res) => {
 
 
     if (!req.body.PC_ID) {
-        var pc_id = null;
-        return
-    } else {
-        var pc_id = req.body.PC_ID;
-    }
-
-
-    const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, pc_id, ansat], (err, results, fields) => {
+        const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, null, ?)"
+        getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, ansat], (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte Ordre" + err)
             res.sendStatus(500)
@@ -79,8 +72,26 @@ router.post("/Ordre_opret", (req, res) => {
         }
         
         console.log("Indsatte ordre: ", results.insertid);
-        res.redirect('http://192.168.4.240/Ordre.html');
+        res.redirect('http://192.168.4.246/Ordre.html');
     })
+        return
+    } else {
+        const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+        getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, pc_id, ansat], (err, results, fields) => {
+        if (err) {
+            console.log("fejlede i at indsætte Ordre" + err)
+            res.sendStatus(500)
+            return
+        }
+        
+        console.log("Indsatte ordre: ", results.insertid);
+        res.redirect('http://192.168.4.246/Ordre.html');
+    })
+    }
+    alert("const pc_ID = " + pc_id)
+
+
+    
 })
 
 module.exports = router;
