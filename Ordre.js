@@ -48,3 +48,21 @@ $(window).load(function () {
         divContainer.appendChild(table);
     });
 });
+
+function rediger() {
+    document.getElementById('Ordre_ID').value = document.getElementById('Ordre-id').value; 
+    var ordre_nummer = document.getElementById('Ordre_ID').value;
+    var url = 'http://192.168.4.246:3000/Ordre/' + ordre_nummer;
+    alert("url: " + url);
+
+    $.getJSON(url, function(data) {
+        document.getElementById('Navn').value = data[0].Navn;
+        document.getElementById('Email').value = data[0].Email;
+        document.getElementById('Tlf').value = data[0].Tlf;
+        document.getElementById('Adresse').value = data[0].Adresse;
+        document.getElementById('Model').value = data[0].Model;
+        document.getElementById('Mærke').value = data[0].Maerke;
+        document.getElementById('PCID').value = data[0].PC_ID;
+     });
+    document.getElementById('Rediger2').style.display='block'; document.getElementById('Rediger').style.display='none'
+}
