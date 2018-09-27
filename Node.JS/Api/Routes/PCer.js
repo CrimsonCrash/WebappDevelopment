@@ -69,9 +69,9 @@ router.post("/Ordre_opret", (req, res) => {
             res.sendStatus(500)
             return
         }
-        
+
         console.log("Indsatte pc: ", results.insertid);
-        res.redirect('http://192.168.4.240/PC.html');
+        res.redirect('http://192.168.4.34/PC.html');
     })
 })
 

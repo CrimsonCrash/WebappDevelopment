@@ -4,7 +4,7 @@ const app = express()
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 //definere porten serveren køre på
 app.listen(3000, () => {
@@ -12,7 +12,7 @@ app.listen(3000, () => {
 })
 
 //hvad for data former der bliver sendt til serveren.
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {

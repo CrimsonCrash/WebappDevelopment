@@ -1,5 +1,5 @@
 $(window).load(function () {
-    $.getJSON("http://192.168.4.246:3000/Ordre", function (data) {
+    $.getJSON("http://192.168.4.34:3000/Ordre", function (data) {
 
         var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
         $.each(data, function (index, value) {
@@ -50,12 +50,12 @@ $(window).load(function () {
 });
 
 function rediger() {
-    document.getElementById('Ordre_ID').value = document.getElementById('Ordre-id').value; 
+    document.getElementById('Ordre_ID').value = document.getElementById('Ordre-id').value;
     var ordre_nummer = document.getElementById('Ordre_ID').value;
-    var url = 'http://192.168.4.246:3000/Ordre/' + ordre_nummer;
+    var url = 'http://192.168.4.34:3000/Ordre/' + ordre_nummer;
     alert("url: " + url);
 
-    $.getJSON(url, function(data) {
+    $.getJSON(url, function (data) {
         document.getElementById('Navn').value = data[0].Navn;
         document.getElementById('Email').value = data[0].Email;
         document.getElementById('Tlf').value = data[0].Tlf;
@@ -63,6 +63,6 @@ function rediger() {
         document.getElementById('Model').value = data[0].Model;
         document.getElementById('Mærke').value = data[0].Maerke;
         document.getElementById('PCID').value = data[0].PC_ID;
-     });
-    document.getElementById('Rediger2').style.display='block'; document.getElementById('Rediger').style.display='none'
+    });
+    document.getElementById('Rediger2').style.display = 'block'; document.getElementById('Rediger').style.display = 'none'
 }
