@@ -96,7 +96,7 @@ router.post("/Ordre_opret", (req, res) => {
 
 //håndtere anmodninger til /Ordre_opdater
 router.post("/Ordre_opdater", (req, res) => {
-    console.log("prøver at odatere ordre")
+    console.log("prøver at opdatere ordre")
 
     const ordreid = req.body.OrdreID
     const navn = req.body.Navn
@@ -108,7 +108,7 @@ router.post("/Ordre_opdater", (req, res) => {
     const pcid = req.body.PCID
     const ansat = req.body.Ansat
 
-    if (!req.body.PCID) {
+    if (req.body.PCID = "") {
         const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = null, Ansat = '" + ansat + "' WHERE Ordre_ID = '" + ordreid + "'";
         getConnection().query(queryString, (err, results, fields) => {
             if (err) {
@@ -122,8 +122,11 @@ router.post("/Ordre_opdater", (req, res) => {
         })
     }
     else {
-        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = '" + pcid + "', Ansat = '" + ansat + "' WHERE Ordre_ID = '" + ordreid + "'";
+        console.log("nået til query string")
+        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = '" + ansat + "' WHERE Ordre_ID = '" + ordreid + "'";
+        console.log("nået til til afsendelse af query")
         getConnection().query(queryString, (err, results, fields) => {
+            console.log("nået til fejl check")
             if (err) {
                 console.log("fejlede i at indsætte Ordre" + err)
                 res.sendStatus(500)
@@ -134,7 +137,5 @@ router.post("/Ordre_opdater", (req, res) => {
             res.redirect('http://192.168.4.34/Ordre.html');
         })
     }
-    alert("const pc_ID = " + pcid)
-
 })
 module.exports = router;
