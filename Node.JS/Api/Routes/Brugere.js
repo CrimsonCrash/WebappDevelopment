@@ -66,9 +66,9 @@ router.post("/Brugere_opret", (req, res) => {
             res.sendStatus(500)
             return
         }
-        
+
         console.log("Indsatte bruger: ", results.insertid);
-        res.redirect('http://192.168.4.240/Bruger.html');
+        res.redirect('http://192.168.4.34/Bruger.html');
     })
 })
 
