@@ -30,7 +30,7 @@
 	<br>
 
 	<!--tabel-->
-	<div id="tabeldiv" class="responsiv">
+	<div id="tabeldiv" class="responsiv"></div>
 
 		<div>
 
@@ -105,8 +105,8 @@
 					</div>
 					<div>
 						<form action="http://192.168.4.34:3000/Ordre_opdater" method="POST">
-							<p><label class="label">Ordre_ID</label>
-								<input name="OrdreID" id="Ordre_ID" type="text" class="input"></p>
+							<p hidden>
+								<input name="OrdreID" id="Ordre_ID" type="text" class="input" hidden></p>
 							<p><label class="label">Navn</label>
 								<input name="Navn" id="Navn" type="text" class="input" required></p>
 							<p><label class="label">Email</label>
@@ -129,6 +129,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 </body>
 
