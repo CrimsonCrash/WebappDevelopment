@@ -49,21 +49,40 @@ router.get("/PCer/:ID", (req, res) => {
 })
 
 //håndtere anmodninger til /PCer_opret
-router.post("/Ordre_opret", (req, res) => {
+router.post("/PCer_opret", (req, res) => {
     console.log("prøver at oprette pc")
 
-    const maerke = req.body.Maerke
-    const model = req.body.Model
-    const reparation = req.body.Reparation
-    const reparation_txt = req.body.Reparation_txt
-    const reservedele = req.body.Reservedele
-    const reservedele_txt = req.body.Reservedele_txt
-    const os = req.body.OS
-    const salg = req.body.Salg
-    const skrottet = req.body.Skrottet
+    var reperation2 = "";
+    var reservedele2 = "";
+    const pcid = req.body.pcid;
+    const maerke = req.body.Maerke;
+    const model = req.body.Model;
+    if(!req.body.Reperation1) {
+        var reperation = 0;
+    } else {
+        var reperation = 1;
+        reperation2 = req.body.Reperation2;
+    }
+    if(!req.body.Reservedele1) {
+        var reservedele = 0;
+    } else {
+        var reservedele = 1;
+        reservedele2 = req.body.Reservedele2;
+    }
+    const os = req.body.OS;
+    if(!req.body.Salg) {
+        var salg = 0;
+    } else {
+        var salg = 1;
+    }
+    if(!req.body.Skrottet) {
+        var skrottet = 0;
+    } else {
+        var skrottet = 1;
+    }
 
     const queryString = "Insert into PCer (Maerke, Model, Reparation, Reparation_txt, Reservedele, Reservedele_txt, OS, Salg, Skrottet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    getConnection().query(queryString, [maerke, model, reparation, reparation_txt, reservedele, reservedele_txt, os, salg, skrottet], (err, results, fields) => {
+    getConnection().query(queryString, [maerke, model, reperation, reperation2, reservedele, reservedele2, os, salg, skrottet], (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte pc" + err)
             res.sendStatus(500)
@@ -73,6 +92,51 @@ router.post("/Ordre_opret", (req, res) => {
         console.log("Indsatte pc: ", results.insertid);
         res.redirect('http://192.168.4.34/PC.html');
     })
+})
+
+//håndtere anmodninger til /PCer_opdater
+router.post("/PCer_opdater", (req, res) => {
+    console.log("prøver at oprette pc")
+
+    const pcid = req.body.pcid;
+    const maerke = req.body.Maerke;
+    const model = req.body.Model;
+    if(!req.body.Reperation1) {
+        var reperation = 0;
+    } else {
+        var reperation = 1;
+    }
+    const reperation2 = req.body.Reperation2;
+    if(!req.body.Reservedele1) {
+        var reservedele = 0;
+    } else {
+        var reservedele = 1;
+    }
+    const reservedele2 = req.body.Reservedele2;
+    const os = req.body.OS;
+    if(!req.body.Salg) {
+        var salg = 0;
+    } else {
+        var salg = 1;
+    }
+    if(!req.body.Skrottet) {
+        var skrottet = 0;
+    } else {
+        var skrottet = 1;
+    }
+
+    const queryString = "UPDATE PCer SET Maerke = '" + maerke + "', Model = '" + model + "', Reparation = " + reperation + ", Reparation_txt = '" + reperation2 + "', Reservedele = " + reservedele + ", Reservedele_txt = '" + reservedele2 + "', OS = '" + os + "', Salg = " + salg + ", Skrottet = " + skrottet + " WHERE PC_ID = '" + pcid + "'"
+    getConnection().query(queryString, (err, results, fields) => {
+        if (err) {
+            console.log("fejlede i at indsætte pc" + err)
+            res.sendStatus(500)
+            return
+        }
+
+        console.log("Indsatte pc: ", results.insertid);
+        res.redirect('http://192.168.4.34/PC.html');
+    })
+    
 })
 
 module.exports = router;
