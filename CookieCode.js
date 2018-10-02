@@ -7,7 +7,7 @@ function setCookie(cname, cvalue, exdays){
 
 function getCookie(cname) {
 	var name = cname + "=";
-	var ca = doc.cookie.split(';');
+	var ca = document.cookie.split(';');
 	for(var i = 0; i < ca.length; i++) {
 		var c = ca[i];
 		while (c.charAt(0) == ' ') {
@@ -19,3 +19,19 @@ function getCookie(cname) {
 	}
 	return "";
 }
+
+function checkCookie() {
+	var user = getCookie("username");
+	if (user != "") {
+		alert("Please fill in your username")
+	} else {
+		user = document.getElementById(UserBox);
+		if (user != "" && user != null) {
+			setCookie(document.getElementById(UserBox), user, 1);
+		}
+	}
+}
+
+document.getElementById("loginButton").addEventListener("click", checkCookie);
+
+console.log("skriptet svarer")
