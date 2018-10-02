@@ -48,6 +48,23 @@ router.get("/Brugere/:ID", (req, res) => {
     })
 })
 
+//kode til login via Brugere
+router.get("/Brugere/:Username/:Password", (req, res) => {
+    console.log("henter bruger med brugernavn: " + req.params.ID)
+
+    const Username = req.params.Username
+	const Password = req.params.Password
+    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn LIKE ? AND Adgangskode LIKE ?"
+    getConnection().query(queryString, [Username, Password], (err, rows, fields) => {
+        if (err) {
+            console.log("Fejlede i at hente Bruger" + err)
+            res.sendStatus(500)
+            return
+        }
+        res.json(rows)
+    })
+})
+
 //håndtere anmodninger til /Bruger_opret
 router.post("/Brugere_opret", (req, res) => {
     console.log("prøver at oprette bruger")

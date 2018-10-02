@@ -1,9 +1,5 @@
 function loginFunction(){
-	$(window).load(function () {
-		$.getJSON("http://192.168.4.34:3000/Bruger", function (data){
-			
-		});
-	});
+	
 	/*
 	const express = require('express');
 	const router = express.Router();
@@ -11,11 +7,13 @@ function loginFunction(){
 	*/
 	var UserName = document.getElementById(UserBox);
 	var Password = document.getElementById(PassBox);
-	var check = false;
-	var DBUser = "";
-	var DBPass = "";
+	
+	$.getJSON("http://192.168.4.34:3000/Bruger/"+UserName+"/"+Password+"", function (data){
+		
+	});
+	
 
-
+	/*
 	const pool = mysql.createPool( { 
 	connectionLimit: 10,
 	host: "localhost",
@@ -27,7 +25,7 @@ function loginFunction(){
 	function getConnection() {
 		return pool
 	}
-
+	
 	connect(function(check) {
 		if (UserName != "" & Password != ""){
 			DBUser = query('SELECT Brugernavn FROM Brugere WHERE Brugernavn = ' + UserName);
@@ -44,7 +42,7 @@ function loginFunction(){
 			return false;
 		}
 	})
-	
+	*/
 }
 
 document.getElementById("loginButton").addEventListener("click", loginFunction);
