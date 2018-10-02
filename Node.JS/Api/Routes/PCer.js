@@ -48,6 +48,21 @@ router.get("/PCer/:ID", (req, res) => {
     })
 })
 
+//håndtere anmodninger til /PCer-ikke-solgt
+router.get("/PCer-ikke-solgt", (req, res) => {
+
+    const OrdreID = req.params.ID
+    const queryString = "SELECT * from PCer WHERE Solgt = 0"
+    getConnection().query(queryString, (err, rows, fields) => {
+        if (err) {
+            console.log("Fejlede i at hente PC" + err)
+            res.sendStatus(500)
+            return
+        }
+        res.json(rows)
+    })
+})
+
 //håndtere anmodninger til /PCer_opret
 router.post("/PCer_opret", (req, res) => {
     console.log("prøver at oprette pc")
