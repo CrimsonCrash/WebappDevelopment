@@ -53,7 +53,7 @@ router.get("/Brugere/:Username/:Password", (req, res) => {
     console.log("henter bruger med brugernavn: " + req.params.ID)
 
     const Username = req.params.Username
-	const Password = req.params.Password
+    const Password = req.params.Password
     const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn LIKE ? AND Adgangskode LIKE ?"
     getConnection().query(queryString, [Username, Password], (err, rows, fields) => {
         if (err) {
@@ -66,18 +66,18 @@ router.get("/Brugere/:Username/:Password", (req, res) => {
 })
 
 //håndtere anmodninger til /Bruger_opret
-router.post("/Brugere_opret", (req, res) => {
+router.post("/Bruger_opret", (req, res) => {
     console.log("prøver at oprette bruger")
 
-    const navn = req.body.Navn
-    const brugernavn = req.body.Brugernavn
-    const adgangskode = req.body.Adgangskode
-    const email = req.body.Email
-    const adresse = req.body.Adresse
-    const bruger_type = req.body.Bruger_type
+    const navn = req.body.navn
+    const brugernavn = req.body.brugernavn
+    const password = req.body.password
+    const email = req.body.email
+    const adresse = req.body.adresse
+    const bruger = req.body.bruger
 
     const queryString = "Insert into Brugere (Navn, Brugernavn, Adgangskode, Email, Adresse, Bruger_type) VALUES (?, ?, ?, ?, ?, ?)"
-    getConnection().query(queryString, [maerke, model, reparation, reparation_txt, reservedele, reservedele_txt, os, salg, skrottet], (err, results, fields) => {
+    getConnection().query(queryString, [navn, brugernavn, password, email, adresse, bruger], (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte bruger" + err)
             res.sendStatus(500)

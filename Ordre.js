@@ -48,10 +48,10 @@ $(window).load(function () {
         divContainer.appendChild(table);
     });
 });
-
+// THIS IS WHERE WE EDIT THE ORDER ID
 function rediger() {
-    document.getElementById('Ordre_ID').value = document.getElementById('Ordre-id').value;
-    var ordre_nummer = document.getElementById('Ordre_ID').value;
+    document.getElementById('Hidden_Ordre_ID').value = document.getElementById('Popup_Ordre_ID').value;
+    var ordre_nummer = document.getElementById('Hidden_Ordre_ID').value;
     var url = 'http://192.168.4.34:3000/Ordre/' + ordre_nummer;
     alert("url: " + url);
 
@@ -64,5 +64,5 @@ function rediger() {
         document.getElementById('Mærke').value = data[0].Maerke;
         document.getElementById('PCID').value = data[0].PC_ID;
     });
-    document.getElementById('Rediger2').style.display = 'block'; document.getElementById('Rediger').style.display = 'none'
+    document.getElementById('Rediger_box').style.display = 'block'; document.getElementById('Rediger').style.display = 'none'
 }
