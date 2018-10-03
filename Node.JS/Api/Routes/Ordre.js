@@ -70,8 +70,6 @@ router.post("/Ordre_opret", (req, res) => {
                 res.sendStatus(500)
                 return
             }
-
-            console.log("Indsatte ordre: ", results.insertid);
             res.redirect('http://192.168.4.34/Ordre.html');
         })
         return
@@ -83,15 +81,9 @@ router.post("/Ordre_opret", (req, res) => {
                 res.sendStatus(500)
                 return
             }
-
-            console.log("Indsatte ordre: ", results.insertid);
             res.redirect('http://192.168.4.34/Ordre.html');
         })
     }
-    alert("const pc_ID = " + pc_id)
-
-
-
 })
 
 //håndtere anmodninger til /Ordre_opdater

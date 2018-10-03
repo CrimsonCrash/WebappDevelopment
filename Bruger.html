@@ -1,114 +1,118 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Oprettelse</title>
-<!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens skærm størrelse-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="Oprettelse.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="Bruger.js"></script>
-<link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
-<link rel="icon" href="Nyan.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>Oprettelse</title>
+    <!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens
+        skærm størrelse-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Oprettelse.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="Bruger.js"></script>
+    <link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
+    <link rel="icon" href="Nyan.ico" type="image/x-icon">
 </head>
+
 <body>
+    <!-- Link Knapper-->
+    <div class="topnav">
+        <a href="PC.html">pc'er</a>
+        <a href="Ordre.html">Ordre</a>
+        <a href="#" class="active">Oprettelse af brugere</a>
+    </div>
 
-<!-- Link Knapper-->
-<div class="topnav">
-		<a href="PC.html">pc'er</a>
-		<a href="Ordre.html">Ordre</a>
-		<a href="#" class="active">Oprettelse af brugere</a>
-</div>
+    <!-- bistands skalerings løsning-->
+    <br>
+    <br>
+    <br>
+    <br>
 
+    <!---Bruger Liste--->
+    <div class="container">
+        <h2 id="titel"></h2>
+        <ul class="ul card">
+            <li class="bar">
+                <span onclick="this.parentElement.style.display='none'" class="remove">×</span>
+                <img src="ejer.png" class="bar_item image">
+                <div class="bar_item">
+                    <span class="large">Mike</span><br>
+                    <span>Ejer</span>
+                </div>
+            </li>
 
+            <li class="bar">
+                <span onclick="this.parentElement.style.display='none'" class="remove">×</span>
+                <img src="superuser.png" class="bar_item image">
+                <div class="bar_item">
+                    <span class="large">Jill</span><br>
+                    <span>Superbruger</span>
+                </div>
+            </li>
 
-<!-- bistands skalerings løsning-->
+            <li class="bar">
+                <span onclick="this.parentElement.style.display='none'" class="remove">×</span>
+                <img src="bruger.png" class="bar_item image">
+                <div class="bar_item">
+                    <span class="large">Jane</span><br>
+                    <span>Bruger</span>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-<br>
-<br>
-<br>
-<br>
+    <!-- Skrald -->
+    <!--knappen i bunden af siden, som indeholder en drop down menu.-->
+    <div>
+        <button onclick="document.getElementById('Opret').style.display='block'" class="hover_button">Opret</button>
+    </div>
 
-<!---Bruger Liste--->
-<div class="container">
-  <h2 id="titel"></h2>
-  <ul class="ul card">
-    <li class="bar">
-      <span onclick="this.parentElement.style.display='none'" class="remove">×</span>
-      <img src="ejer.png" class="bar_item image">
-      <div class="bar_item">
-        <span class="large">Mike</span><br>
-        <span>Ejer</span>
-      </div>
-    </li>
+    <!--modal vindue til registrering af brugere-->
+    <div id="Opret" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--knap til at lukke modal vinduet-->
+                <span onclick="document.getElementById('Opret').style.display='none'" class="close">&times;</span>
+                <h2>Opret</h2>
+            </div>
+            <div>
+                <form action="http://192.168.4.34:3000/Bruger_opret" method="POST">
+                    <p>
+                        <label class="label">Navn</label>
+                        <input id="navn" name="navn" type="text" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Brugernavn</label>
+                        <input id="brugernavn" name="brugernavn" type="text" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Password</label>
+                        <input id="password" name="password" type="password" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Email</label>
+                        <input id="Email" name="Email" type="text" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Addresse</label>
+                        <input id="adresse" name="adresse" type="text" class="input" required="required"></p>
 
-    <li class="bar">
-      <span onclick="this.parentElement.style.display='none'" class="remove">×</span>
-      <img src="superuser.png" class="bar_item image">
-      <div class="bar_item">
-        <span class="large">Jill</span><br>
-        <span>Superbruger</span>
-      </div>
-    </li>
+                    <!---Radio Knap Til Bruger Klasse--->
+                    <div class="radio_btn">
+                        <label>Bruger klasse</label>
 
-    <li class="bar">
-      <span onclick="this.parentElement.style.display='none'" class="remove">×</span>
-      <img src="bruger.png" class="bar_item image">
-      <div class="bar_item">
-        <span class="large">Jane</span><br>
-        <span>bruger</span>
-      </div>
-    </li>
-  </ul>
-</div>
+                        <input id="Bruger" name="bruger" type="radio" value="Bruger" checked="checked">
+                        <label>Bruger</label>
 
+                        <input id="Superbruger" name="bruger" type="radio" value="Superbruger">
+                        <label>Superbruger</label>
 
-
-<!-- Skrald -->
-<!--knappen i bunden af siden, som indeholder en drop down menu.-->
-<div>
-<button onclick="document.getElementById('Opret').style.display='block'" class="hover_button">opret</button>
-</div>
-
-<!--modal vindue til registrering af brugere-->
-<div id="Opret" class="modal">
-	<div class="modal-content">
-		<div class="modal-header">
-			<!--knap til at lukke modal vinduet-->
-			<span onclick="document.getElementById('Opret').style.display='none'"
-			class="close">&times;</span>
-			<h2>Opret</h2>
-		</div>
-		<div>
-			<form>
-				<p><label class="label">Navn</label>
-				<input id="navn" type="text" class="input"></p>
-				<p><label class="label">Password</label>
-				<input id="password" type="password" class="input"></p>
-				<p><label class="label">Email</label>
-				<input id="Email" type="text" class="input"></p>
-				<p><label class="label">Adresse</label>
-				<input id="adresse" type="text" class="input"></p>
-				
-				<!---Radio Knap Til Bruger Klasse--->
-				<div class="radio_btn">
-				<label>Bruger klasse</label>
-				<input id="ejer" type="radio" name="bruger" value="ejer">
-				<label>Ejer</label>
-				
-				<input id="superuser" type="radio" name="bruger" value="superuser">
-				<label>Superuser</label>
-				
-				<input id="bruger" type="radio" name="bruger" value="bruger" checked>
-				<label>Bruger</label> 
-				</div>
-				<p>
-				<button class="button">Opret Bruger</button></p>
-			</form>
-		</div>
-	</div>
-</div>
-
-
+                        <input id="Ejer" name="bruger" type="radio" value="Ejer">
+                        <label>Ejer</label>
+                    </div>
+                    <p>
+                        <button class="button" type="submit" value="Submit">Opret Bruger</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
-</html> 
+
+</html>

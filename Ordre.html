@@ -87,8 +87,8 @@
 					</div>
 					<div>
 						<form>
-							<p><label class="label">Ordre-id</label>
-								<input name="Ordre-id" id="Ordre-id" type="text" class="input"></p>
+							<p><label class="label">Ordre_ID</label>
+								<input name="Popup_Ordre_ID" id="Popup_Ordre_ID" type="text" class="input"></p>
 							<p>
 								<button onclick="rediger()" class="button" type="button" value="Submit">Rediger</button></p>
 						</form>
@@ -96,17 +96,17 @@
 				</div>
 			</div>
 
-			<div id="Rediger2" class="modal">
+			<div id="Rediger_box" class="modal">
 				<div class="modal-content">
 					<div class="modal-header">
 						<!--knap til at lukke modal vinduet-->
-						<span onclick="document.getElementById('Rediger2').style.display='none'" class="close">&times;</span>
+						<span onclick="document.getElementById('Rediger_box').style.display='none'" class="close">&times;</span>
 						<h2>Rediger</h2>
 					</div>
 					<div>
 						<form action="http://192.168.4.34:3000/Ordre_opdater" method="POST">
 							<p hidden>
-								<input name="OrdreID" id="Ordre_ID" type="text" class="input" hidden></p>
+								<input name="OrdreID" id="Hidden_Ordre_ID" type="text" class="input" hidden></p>
 							<p><label class="label">Navn</label>
 								<input name="Navn" id="Navn" type="text" class="input" required></p>
 							<p><label class="label">Email</label>
