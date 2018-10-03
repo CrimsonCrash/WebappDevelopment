@@ -72,25 +72,25 @@ router.post("/PCer_opret", (req, res) => {
     const pcid = req.body.pcid;
     const maerke = req.body.Maerke;
     const model = req.body.Model;
-    if(!req.body.Reperation1) {
+    if (!req.body.Reperation1) {
         var reperation = 0;
     } else {
         var reperation = 1;
         reperation2 = req.body.Reperation2;
     }
-    if(!req.body.Reservedele1) {
+    if (!req.body.Reservedele1) {
         var reservedele = 0;
     } else {
         var reservedele = 1;
         reservedele2 = req.body.Reservedele2;
     }
     const os = req.body.OS;
-    if(!req.body.Salg) {
+    if (!req.body.Salg) {
         var salg = 0;
     } else {
         var salg = 1;
     }
-    if(!req.body.Skrottet) {
+    if (!req.body.Skrottet) {
         var skrottet = 0;
     } else {
         var skrottet = 1;
@@ -116,25 +116,25 @@ router.post("/PCer_opdater", (req, res) => {
     const pcid = req.body.pcid;
     const maerke = req.body.Maerke;
     const model = req.body.Model;
-    if(!req.body.Reperation1) {
+    if (!req.body.Reperation1) {
         var reperation = 0;
     } else {
         var reperation = 1;
     }
     const reperation2 = req.body.Reperation2;
-    if(!req.body.Reservedele1) {
+    if (!req.body.Reservedele1) {
         var reservedele = 0;
     } else {
         var reservedele = 1;
     }
     const reservedele2 = req.body.Reservedele2;
     const os = req.body.OS;
-    if(!req.body.Salg) {
+    if (!req.body.Salg) {
         var salg = 0;
     } else {
         var salg = 1;
     }
-    if(!req.body.Skrottet) {
+    if (!req.body.Skrottet) {
         var skrottet = 0;
     } else {
         var skrottet = 1;
@@ -151,7 +151,7 @@ router.post("/PCer_opdater", (req, res) => {
         console.log("Indsatte pc: ", results.insertid);
         res.redirect('http://192.168.4.34/PC.html');
     })
-    
+
 })
 
 module.exports = router;

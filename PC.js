@@ -40,9 +40,9 @@ $(document).ready(function () {
 $(window).load(function () {
     $.getJSON("http://192.168.4.34:3000/PCer", function (data) {
 
-        var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+        var arrItems = []; // THE ARRAY TO STORE JSON ITEMS.
         $.each(data, function (index, value) {
-            arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+            arrItems.push(value); // PUSH THE VALUES INSIDE THE ARRAY.
         });
 
         // EXTRACT VALUE FOR TABLE HEADER.
@@ -61,11 +61,11 @@ $(window).load(function () {
 
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
-        var tr = table.insertRow(-1);                   // TABLE ROW.
+        var tr = table.insertRow(-1); // TABLE ROW.
         tr.className = 'table_head';
 
         for (var i = 0; i < col.length; i++) {
-            var th = document.createElement("th");      // TABLE HEADER.
+            var th = document.createElement("th"); // TABLE HEADER.
             th.innerHTML = col[i];
             tr.appendChild(th);
         }
@@ -122,5 +122,6 @@ function rediger() {
             $('#Skrottet').prop('checked', true)
         }
     });
-    document.getElementById('Rediger2').style.display='block'; document.getElementById('Rediger').style.display='none'
+    document.getElementById('Rediger2').style.display = 'block';
+    document.getElementById('Rediger').style.display = 'none'
 }
