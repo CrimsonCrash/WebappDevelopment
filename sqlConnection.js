@@ -5,12 +5,26 @@ function loginFunction(){
 	const router = express.Router();
 	const mysql = require('mysql');
 	*/
-	var UserName = document.getElementById(UserBox);
-	var Password = document.getElementById(PassBox);
+	//erklæring af variabler
+	var UserName = document.getElementById("UserBox").value;
+	var Password = document.getElementById("PassBox").value;
+	var url = "http://192.168.4.34:3000/Brugere/"+UserName+"/"+Password+""
 	
-	$.getJSON("http://192.168.4.34:3000/Bruger/"+UserName+"/"+Password+"", function (data){
-		
-	});
+	//vi bruger JSON til at kalde dataen på vores server
+	if (UserName != "" & Password != ""){
+		$.getJSON("http://192.168.4.34:3000/Brugere/"+UserName+"/"+Password+"", function (data){
+			if(data.length){
+				window.location.replace("Ordre.html");
+			}
+			else {
+				alert("wrong username or password");
+				return false;
+			}
+		});
+	}
+	else {
+		alert("udfyld venligt brugernavn og password")
+	};
 	
 
 	/*
