@@ -89,4 +89,18 @@ router.post("/Bruger_opret", (req, res) => {
     })
 })
 
+router.delete('/Bruger/:id', function (req, res) {
+
+    const Brugerid = req.params.id
+    const queryString = "DELETE FROM Brugere WHERE Bruger_ID = ?"
+    getConnection().query(queryString, [Brugerid], (err, rows, fields) => {
+        if (err) {
+            console.log("Fejlede i slette bruger" + err)
+            res.sendStatus(500)
+            return
+        }
+        res.redirect('http://192.168.4.34/Bruger.html');
+    })
+    
+});
 module.exports = router;
