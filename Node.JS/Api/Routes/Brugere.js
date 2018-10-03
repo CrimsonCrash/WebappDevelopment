@@ -101,6 +101,6 @@ router.delete('/Bruger/:id', function (req, res) {
         }
         res.redirect('http://192.168.4.34/Bruger.html');
     })
-    
+
 });
 module.exports = router;
