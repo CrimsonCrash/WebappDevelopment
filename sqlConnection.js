@@ -1,5 +1,5 @@
-function loginFunction(){
-	
+function loginFunction() {
+
 	/*
 	const express = require('express');
 	const router = express.Router();
@@ -8,24 +8,22 @@ function loginFunction(){
 	//erklæring af variabler
 	var UserName = document.getElementById("UserBox").value;
 	var Password = document.getElementById("PassBox").value;
-	var url = "http://192.168.4.34:3000/Brugere/"+UserName+"/"+Password+""
-	
+	var url = "http://192.168.4.34:3000/Brugere/" + UserName + "/" + Password + ""
+
 	//vi bruger JSON til at kalde dataen på vores server
-	if (UserName != "" & Password != ""){
-		$.getJSON("http://192.168.4.34:3000/Brugere/"+UserName+"/"+Password+"", function (data){
-			if(data.length){
+	if (UserName != "" & Password != "") {
+		$.getJSON("http://192.168.4.34:3000/Brugere/" + UserName + "/" + Password + "", function (data) {
+			if (data.length) {
 				window.location.replace("Ordre.html");
-			}
-			else {
+			} else {
 				alert("wrong username or password");
 				return false;
 			}
 		});
-	}
-	else {
+	} else {
 		alert("udfyld venligt brugernavn og password")
 	};
-	
+
 
 	/*
 	const pool = mysql.createPool( { 
