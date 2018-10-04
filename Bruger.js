@@ -45,7 +45,11 @@ $(window).load(function () {
 
 function skjul() {
     if (type2 == "Bruger") {
-        var x = document.getElementById("knap").style.display = "none";
+        document.getElementById("knap").style.display = "none";
+    }
+    if (type2 == "SuperBruger") {
+        document.getElementById("Ejer").style.display = "none";
+        document.getElementById("Ejer2").style.display = "none";
     }
 };
 function slet(i) {
