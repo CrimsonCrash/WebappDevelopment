@@ -43,9 +43,6 @@ function slet(i) {
     if (r == true) {
         document.getElementById(i).style.display = "none";
         var url = "http://192.168.4.34:3000/Bruger/"+i;
-        $.getJSON(url, function (data) {
-
-        })
         $.ajax({
             url: url,
             method: 'DELETE'
