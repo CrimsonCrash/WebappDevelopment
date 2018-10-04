@@ -90,7 +90,6 @@ router.post("/Bruger_opret", (req, res) => {
 })
 
 router.delete('/Bruger/:id', function (req, res) {
-
     const Brugerid = req.params.id
     const queryString = "DELETE FROM Brugere WHERE Bruger_ID = ?"
     getConnection().query(queryString, [Brugerid], (err, rows, fields) => {
