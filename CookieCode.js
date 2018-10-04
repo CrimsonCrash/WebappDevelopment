@@ -1,10 +1,12 @@
+//opsætter en cookie
 function setCookie(cname, cvalue, exdays){
 	var d = new Date();
 	d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	var expires = "expires="+ d.toUTCString();
+	var expires = "expires="+ d.toGMTString();
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
+//hænter en cookie
 function getCookie(cname) {
 	var name = cname + "=";
 	var decodedCookie = decodeURIComponent(document.cookie);
@@ -21,10 +23,11 @@ function getCookie(cname) {
 	return "";
 }
 
+//tjekker om der er en cookie der allerede eksisterer
 function checkCookie() {
-	var user = getCookie("username");
+	var user = getCookie(document.getElementById(UserBox).value);
 	if (user != "" && user != null) {
-		user=setCookie(document.getElementById(UserBox), user, 1);
+		user=setCookie("username", user, 1);
 	}
 }
 
