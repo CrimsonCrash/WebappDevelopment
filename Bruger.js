@@ -9,10 +9,10 @@ $(window).load(function () {
 
             li = document.createElement('li');
             li.setAttribute('class','bar');
-            li.setAttribute('id',i);
+            li.setAttribute('id',arrItems[i].Bruger_ID);
             span = document.createElement('span');
             span.innerHTML = "&times;";
-            span.setAttribute("onclick","slet("+i+")");
+            span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
             span.setAttribute("class","remove");
             li.appendChild(span);
             img = document.createElement('img');
@@ -40,15 +40,14 @@ $(window).load(function () {
 
 function slet(i) {
     var r = confirm("Er du sikker på at du vil slette brugeren?!");
-if (r == true) {
-    document.getElementById(i).style.display = "none";
-    $.ajax({
-        url: 'http://192.168.4.34/Bruger/'+i,
-        method: 'DELETE',
-      })
-} else {
+    if (r == true) {
+        document.getElementById(i).style.display = "none";
+        var url = "http://192.168.4.34:3000/Bruger/"+i;
+        $.ajax({
+            url: url,
+            method: 'DELETE'
+        })
+    } else {
     
-} 
-    
-
+    } 
 }
