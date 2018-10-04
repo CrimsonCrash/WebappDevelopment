@@ -64,7 +64,7 @@ function checkCookie(type) {
 	//checker om user værdien i cookien er udfyldt og hvis den er videre stilles der automatisk til ordre siden
 	if (type2 != "") {
 		window.location.replace("Ordre.html");
-	//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
+		//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
 	} else {
 		//sætter user variablen til værdien fra userbox
 		type2 = type;
