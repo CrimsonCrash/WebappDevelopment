@@ -21,7 +21,7 @@ function getConnection() {
 //håndtere anmodninger til /Bruger
 router.get("/Brugere", (req, res) => {
 
-    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere"
+    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere ORDER BY Navn"
     getConnection().query(queryString, (err, rows, fields) => {
         if (err) {
             console.log("Fejlede i at hente Brugere" + err)

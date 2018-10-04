@@ -100,8 +100,8 @@ router.post("/Ordre_opdater", (req, res) => {
     const pcid = req.body.PCID
     const ansat = req.body.Ansat
 
-    if (req.body.PCID = "") {
-        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = null, Ansat = '" + ansat + "' WHERE Ordre_ID = '" + ordreid + "'";
+    if (!req.body.PCID.lenght) {
+        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = null, Ansat = " + ansat + " WHERE Ordre_ID = " + ordreid + ";";
         getConnection().query(queryString, (err, results, fields) => {
             if (err) {
                 console.log("fejlede i at indsætte Ordre" + err)
@@ -114,7 +114,7 @@ router.post("/Ordre_opdater", (req, res) => {
         })
     } else {
         console.log("nået til query string")
-        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = '" + ansat + "' WHERE Ordre_ID = '" + ordreid + "'";
+        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = " + ansat + " WHERE Ordre_ID = " + ordreid + "";
         console.log("nået til til afsendelse af query")
         getConnection().query(queryString, (err, results, fields) => {
             console.log("nået til fejl check")
