@@ -112,8 +112,7 @@ router.post("/Ordre_opdater", (req, res) => {
             console.log("querystring: " + queryString)
             res.redirect('http://192.168.4.34/Ordre.html');
         })
-    }
-    else {
+    } else {
         console.log("nået til query string")
         const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = '" + ansat + "' WHERE Ordre_ID = '" + ordreid + "'";
         console.log("nået til til afsendelse af query")
