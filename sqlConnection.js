@@ -14,7 +14,9 @@ function loginFunction() {
 	if (UserName != "" & Password != "") {
 		$.getJSON("http://192.168.4.34:3000/Brugere/" + UserName + "/" + Password + "", function (data) {
 			if (data.length) {
+				checkCookie();
 				window.location.replace("Ordre.html");
+
 			} else {
 				alert("wrong username or password");
 				return false;
