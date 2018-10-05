@@ -101,4 +101,5 @@ function checkCookie2(ID) {
 	}
 }
 
+
 document.getElementById("loginButton").addEventListener("click", loginFunction);

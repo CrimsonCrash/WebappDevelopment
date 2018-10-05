@@ -37,6 +37,7 @@ $(document).ready(function () {
     });
 });
 
+
 $(window).load(function () {
     checkCookie();
     $.getJSON("http://192.168.4.34:3000/PCer", function (data) {

@@ -37,6 +37,7 @@ $(window).load(function () {
             tr.appendChild(th);
         }
 
+        
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < arrItems.length; i++) {

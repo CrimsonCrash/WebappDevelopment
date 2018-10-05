@@ -18,6 +18,7 @@ function getConnection() {
     return pool
 }
 
+
 //håndtere anmodninger til /Bruger
 router.get("/Brugere", (req, res) => {
 

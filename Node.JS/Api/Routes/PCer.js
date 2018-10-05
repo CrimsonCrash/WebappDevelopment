@@ -48,6 +48,7 @@ router.get("/PCer/:ID", (req, res) => {
     })
 })
 
+
 //håndtere anmodninger til /PCer-ikke-solgt
 router.get("/PCer-ikke-solgt", (req, res) => {
 

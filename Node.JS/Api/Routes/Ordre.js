@@ -18,6 +18,7 @@ function getConnection() {
     return pool
 }
 
+
 //håndtere anmodninger til /Ordre/ID
 router.get("/Ordre/:ID", (req, res) => {
     console.log("henter bruger med id: " + req.params.ID)
