@@ -141,7 +141,7 @@ router.post("/PCer_opdater", (req, res) => {
         var skrottet = 1;
     }
 
-    const queryString = "UPDATE PCer SET Maerke = '" + maerke + "', Model = '" + model + "', Reparation = " + reperation + ", Reparation_txt = '" + reperation2 + "', Reservedele = " + reservedele + ", Reservedele_txt = '" + reservedele2 + "', OS = '" + os + "', Salg = " + salg + ", Skrottet = " + skrottet + " WHERE PC_ID = '" + pcid + "'"
+    const queryString = "UPDATE PCer SET Maerke = '" + maerke + "', Model = '" + model + "', Reparation = " + reperation + ", Reparation_txt = '" + reperation2 + "', Reservedele = " + reservedele + ", Reservedele_txt = '" + reservedele2 + "', OS = '" + os + "', Til_Salg = " + salg + ", Skrottet = " + skrottet + " WHERE PC_ID = '" + pcid + "'"
     getConnection().query(queryString, (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte pc" + err)
