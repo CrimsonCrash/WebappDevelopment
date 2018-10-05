@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Ordre</title>
+	<!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens skærm størrelse-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="Ordre_PC.css">
+	<!--Tilføjer referencer til javascript filer, heriblandt googles jquery fil-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="Ordre.js"></script>
+	<link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
+	<link rel="icon" href="Nyan.ico" type="image/x-icon">
+</head>
+
+<body onload="page_load();">
+
+	<!-- Link Knapper-->
+	<div class="topnav">
+		<a href="PC.html">pc'er</a>
+		<a href="#" class="active">Ordre</a>
+		<a href="Bruger.html">Oprettelse af brugere</a>
+	</div>
+
+	<!-- bistands skalerings løsning-->
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<!--tabel-->
+	<div id="tabeldiv" class="responsiv"></div>
+
+	
+	<div>
+
+		<!--knappen i bunden af siden, som indeholder en drop down menu.-->
+		<div class="dropdown">
+			<button class="hover_button">opret/rediger</button>
+			<div class="dropdown-content" style="top:-100%">
+				<!--knapper i dropdown menuen der åbner et modal vindue.-->
+				<button onclick="document.getElementById('Opret').style.display='block'">Opret</button>
+				<button onclick="document.getElementById('Rediger').style.display='block'">Rediger</button>
+			</div>
+		</div>
+
+		<!--modal vindue til registrering af ordre-->
+		<div id="Opret" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--knap til at lukke modal vinduet-->
+					<span onclick="document.getElementById('Opret').style.display='none'" class="close">&times;</span>
+					<h2>Opret</h2>
+				</div>
+				<div>
+					<form action="http://192.168.4.34:3000/Ordre_opret" method="POST">
+						<p><label class="label">Navn</label>
+							<input name="Navn" type="text" class="input" required></p>
+						<p><label class="label">Email</label>
+							<input name="Email" type="text" class="input" required></p>
+						<p><label class="label">Tlf</label>
+							<input name="Tlf" type="text" class="input" required></p>
+						<p><label class="label">Adresse</label>
+							<input name="Adresse" type="text" class="input" required></p>
+						<p><label class="label">Model</label>
+							<input name="Model" type="text" class="input" required></p>
+						<p><label class="label">Mærke</label>
+							<input name="Maerke" type="text" class="input" required></p>
+						<p><label class="label">PC_ID på solgt pc</label>
+							<input id="PC_ID" name="PC_ID" type="text" class="input"></p>
+						<p hidden><label class="label">Ansat</label>
+							<input id="ansat1" name="Ansat" type="text" class="input"></p>
+						<p>
+							<button class="button" type="submit" value="Submit">Opret Ordre</button></p>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!--modal vindue til redigering af pc'er-->
+		<div id="Rediger" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--knap til at lukke modal vinduet-->
+					<span onclick="document.getElementById('Rediger').style.display='none'" class="close">&times;</span>
+					<h2>Rediger</h2>
+				</div>
+				<div>
+					<form>
+						<p><label class="label">Ordre_ID</label>
+							<input name="Popup_Ordre_ID" id="Popup_Ordre_ID" type="text" class="input"></p>
+						<p>
+							<button onclick="rediger()" class="button" type="button" value="Submit">Rediger</button></p>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="Rediger_box" class="modal">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--knap til at lukke modal vinduet-->
+					<span onclick="document.getElementById('Rediger_box').style.display='none'" class="close">&times;</span>
+					<h2>Rediger</h2>
+				</div>
+				<div>
+					<form action="http://192.168.4.34:3000/Ordre_opdater" method="POST">
+						<p hidden>
+							<input name="OrdreID" id="Hidden_Ordre_ID" type="text" class="input" hidden></p>
+						<p><label class="label">Navn</label>
+							<input name="Navn" id="Navn" type="text" class="input" required></p>
+						<p><label class="label">Email</label>
+							<input name="Email" id="Email" type="text" class="input" required></p>
+						<p><label class="label">Tlf</label>
+							<input name="Tlf" id="Tlf" type="text" class="input" required></p>
+						<p><label class="label">Adresse</label>
+							<input name="Adresse" id="Adresse" type="text" class="input" required></p>
+						<p><label class="label">Model</label>
+							<input name="Model" id="Model" type="text" class="input" required></p>
+						<p><label class="label">Mærke</label>
+							<input name="Maerke" id="Mærke" type="text" class="input" required></p>
+						<p><label class="label">PC_ID på solgt pc</label>
+							<input name="PCID" id="PC_ID_Rediger" type="text" class="input"></p>
+						<p hidden><label class="label">Ansat</label>
+							<input id="ansat2" name="Ansat" type="text" class="input"></p>
+						<p>
+							<button class="button" type="submit" value="Submit">Opdater</button></p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

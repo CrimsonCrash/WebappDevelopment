@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Oprettelse</title>
+    <!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens
+        skærm størrelse-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Oprettelse.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="Bruger.js"></script>
+    <link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
+    <link rel="icon" href="Nyan.ico" type="image/x-icon">
+</head>
+
+<body onload="skjul();">
+    <!-- Link Knapper-->
+    <div class="topnav">
+        <a href="PC.html">pc'er</a>
+        <a href="Ordre.html">Ordre</a>
+        <a href="#" class="active">Oprettelse af brugere</a>
+    </div>
+
+    
+    <!-- bistands skalerings løsning-->
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!---Bruger Liste--->
+    <div class="container">
+        <h2 id="titel"></h2>
+        <ul class="ul card" id="liste">
+            
+        </ul>
+    </div>
+
+    <!-- Skrald -->
+    <!--knappen i bunden af siden, som indeholder en drop down menu.-->
+    <div id="knap">
+        <button onclick="document.getElementById('Opret').style.display='block'" class="hover_button">Opret</button>
+    </div>
+
+    <!--modal vindue til registrering af brugere-->
+    <div id="Opret" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--knap til at lukke modal vinduet-->
+                <span onclick="document.getElementById('Opret').style.display='none'" class="close">&times;</span>
+                <h2>Opret</h2>
+            </div>
+            <div>
+                <form action="http://192.168.4.34:3000/Bruger_opret" method="POST">
+                    <p>
+                        <label class="label">Navn</label>
+                        <input id="navn" name="navn" type="text" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Brugernavn</label>
+                        <input id="brugernavn" name="brugernavn" type="text" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Password</label>
+                        <input id="password" name="password" type="password" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Email</label>
+                        <input id="Email" name="Email" type="text" class="input" required="required"></p>
+                    <p>
+                        <label class="label">Addresse</label>
+                        <input id="adresse" name="adresse" type="text" class="input" required="required"></p>
+
+                    <!---Radio Knap Til Bruger Klasse--->
+                    <div class="radio_btn">
+                        <label>Bruger klasse</label>
+
+                        <input id="Bruger" name="bruger" type="radio" value="Bruger" checked="checked">
+                        <label>Bruger</label>
+
+                        <input id="SuperBruger" name="bruger" type="radio" value="SuperBruger">
+                        <label>SuperBruger</label>
+
+                        <input id="Ejer" name="bruger" type="radio" value="Ejer">
+                        <label id="Ejer2">Ejer</label>
+                    </div>
+                    <p>
+                        <button class="button" type="submit" value="Submit">Opret Bruger</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
