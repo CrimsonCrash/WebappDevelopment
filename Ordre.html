@@ -14,7 +14,7 @@
 	<link rel="icon" href="Nyan.ico" type="image/x-icon">
 </head>
 
-<body>
+<body onload="page_load();">
 
 	<!-- Link Knapper-->
 	<div class="topnav">
@@ -68,8 +68,8 @@
 							<input name="Maerke" type="text" class="input" required></p>
 						<p><label class="label">PC_ID på solgt pc</label>
 							<input id="PC_ID" name="PC_ID" type="text" class="input"></p>
-						<p><label class="label">Ansat</label>
-							<input name="Ansat" type="text" class="input"></p>
+						<p hidden><label class="label">Ansat</label>
+							<input id="ansat1" name="Ansat" type="text" class="input"></p>
 						<p>
 							<button class="button" type="submit" value="Submit">Opret Ordre</button></p>
 					</form>
@@ -121,8 +121,8 @@
 							<input name="Maerke" id="Mærke" type="text" class="input" required></p>
 						<p><label class="label">PC_ID på solgt pc</label>
 							<input name="PCID" id="PC_ID_Rediger" type="text" class="input"></p>
-						<p><label class="label">Ansat</label>
-							<input name="Ansat" type="text" class="input"></p>
+						<p hidden><label class="label">Ansat</label>
+							<input id="ansat2" name="Ansat" type="text" class="input"></p>
 						<p>
 							<button class="button" type="submit" value="Submit">Opdater</button></p>
 					</form>

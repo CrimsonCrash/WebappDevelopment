@@ -1,3 +1,6 @@
+var ID2 = "";
+var type2 = "";
+
 $(window).load(function () {
 
     checkCookie();
@@ -97,7 +100,8 @@ function getCookie(cname) {
 
 function checkCookie() {
 	//modtager user fra getcookie funktionen.
-	var type2 = getCookie("BrugerType");
+    type2 = getCookie("BrugerType");
+    ID2 = getCookie("ID");
 	//checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
 	if (type2 != "") {
         
@@ -105,4 +109,9 @@ function checkCookie() {
 	} else {
 		window.location.replace("index.html");
 	}
+}
+
+function page_load() {
+    document.getElementById("ansat1").value = ID2
+    document.getElementById("ansat2").value = ID2
 }

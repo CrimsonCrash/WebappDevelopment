@@ -12,6 +12,7 @@ function loginFunction() {
 		$.getJSON("http://192.168.4.34:3000/Brugere/" + UserName + "/" + Password + "", function (data) {
 			if (data.length) {
 				checkCookie(data[0].Bruger_type);
+				checkCookie2(data[0].Bruger_ID);
 				window.location.replace("Ordre.html");
 			} else {
 				alert("wrong username or password");
@@ -40,7 +41,7 @@ function getCookie(cname) {
 	var name = cname + "=";
 	//opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
 	var ca = document.cookie.split(';');
-	//køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
+	//køre cookien igennem et for, der køre indtil i er lige så stort som ca er langt.
 	for (var i = 0; i < ca.length; i++) {
 		//variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
 		var c = ca[i];
@@ -71,6 +72,23 @@ function checkCookie(type) {
 		//checker for at sikre at user ikke er tom eller null
 		if (type2 != "" && type2 != null) {
 			setCookie("BrugerType", type, 1);
+		}
+	}
+}
+
+function checkCookie2(ID) {
+	//modtager user fra getcookie funktionen.
+	var ID2 = getCookie("ID");
+	//checker om user værdien i cookien er udfyldt og hvis den er videre stilles der automatisk til ordre siden
+	if (ID2 != "") {
+		window.location.replace("Ordre.html");
+	//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
+	} else {
+		//sætter user variablen til værdien fra userbox
+		ID2 = ID;
+		//checker for at sikre at user ikke er tom eller null
+		if (ID2 != "" && ID2 != null) {
+			setCookie("ID", ID2, 1);
 		}
 	}
 }
