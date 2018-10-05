@@ -14,11 +14,22 @@ $(window).load(function () {
             li.setAttribute('class','bar');
             li.setAttribute('id',arrItems[i].Bruger_ID);
             if (type2 != "Bruger") {
-                span = document.createElement('span');
-                span.innerHTML = "&times;";
-                span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
-                span.setAttribute("class","remove");
-                li.appendChild(span);
+                if  (type2 != "SuperBruger") {
+                    span = document.createElement('span');
+                    span.innerHTML = "&times;";
+                    span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
+                    span.setAttribute("class","remove");
+                    li.appendChild(span);
+                }
+                if (type2 != "Ejer") {
+                    if (arrItems[i].Bruger_type != "Ejer") {
+                        span = document.createElement('span');
+                        span.innerHTML = "&times;";
+                        span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
+                        span.setAttribute("class","remove");
+                        li.appendChild(span);
+                    }
+                }
             }
             img = document.createElement('img');
             img.setAttribute('src',arrItems[i].Bruger_type + '.png');

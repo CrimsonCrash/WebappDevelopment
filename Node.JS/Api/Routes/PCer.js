@@ -96,7 +96,7 @@ router.post("/PCer_opret", (req, res) => {
         var skrottet = 1;
     }
 
-    const queryString = "Insert into PCer (Maerke, Model, Reparation, Reparation_txt, Reservedele, Reservedele_txt, OS, Salg, Skrottet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    const queryString = "Insert into PCer (Maerke, Model, Reparation, Reparation_txt, Reservedele, Reservedele_txt, OS, Til_Salg, Skrottet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     getConnection().query(queryString, [maerke, model, reperation, reperation2, reservedele, reservedele2, os, salg, skrottet], (err, results, fields) => {
         if (err) {
             console.log("fejlede i at indsætte pc" + err)

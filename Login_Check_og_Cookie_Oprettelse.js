@@ -1,3 +1,11 @@
+var input = document.getElementById("PassBox");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("loginButton").click();
+    }
+});
+
 $(window).load(function () {
 	checkCookie()
 });

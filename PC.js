@@ -46,46 +46,107 @@ $(window).load(function () {
             arrItems.push(value); // PUSH THE VALUES INSIDE THE ARRAY.
         });
 
-        // EXTRACT VALUE FOR TABLE HEADER.
-        var col = [];
-        for (var i = 0; i < arrItems.length; i++) {
-            for (var key in arrItems[i]) {
-                if (col.indexOf(key) === -1) {
-                    col.push(key);
-                }
-            }
-        }
+         // CREATE DYNAMIC TABLE.
+         var table = document.createElement("table");
+         table.setAttribute("class", "table");
+ 
+         var tr = table.insertRow(-1); // TABLE ROW.
+         tr.className = 'table_head';
+ 
 
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-        table.setAttribute("class", "table");
+        //Her under oprettes table headersne
+         var th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "PC ID";
+         tr.appendChild(th);
+         var th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Mærke";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Model";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Reparation";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Reparation Text";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Reservedele";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Reservedele Text";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "OS";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Til Salg";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Solgt";
+         tr.appendChild(th);
+         th = document.createElement("th"); // TABLE HEADER.
+         th.innerHTML = "Skrottet";
+         tr.appendChild(th);
 
-        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-        var tr = table.insertRow(-1); // TABLE ROW.
-        tr.className = 'table_head';
-
-        for (var i = 0; i < col.length; i++) {
-            var th = document.createElement("th"); // TABLE HEADER.
-            th.innerHTML = col[i];
-            tr.appendChild(th);
-        }
-
-
-        // ADD JSON DATA TO THE TABLE AS ROWS.
+         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < arrItems.length; i++) {
 
             tr2 = table.insertRow(-1);
 
-            for (var j = 0; j < col.length; j++) {
-                var tabCell = tr2.insertCell(-1);
-                tabCell.innerHTML = arrItems[i][col[j]];
+            var tabCell = tr2.insertCell(-1);
+            tabCell.innerHTML = arrItems[i].PC_ID;
+            var tabCell = tr2.insertCell(-1);
+            tabCell.innerHTML = arrItems[i].Maerke;
+            var tabCell = tr2.insertCell(-1);
+            tabCell.innerHTML = arrItems[i].Model;
+            var tabCell = tr2.insertCell(-1);
+            //check om værdien er 1, og hvis den er indsæt ja.
+            if (arrItems[i].Reparation == 1) {
+                tabCell.innerHTML = "ja";
+            } else {
+                tabCell.innerHTML = "nej";
+            }
+            var tabCell = tr2.insertCell(-1);
+            tabCell.innerHTML = arrItems[i].Reparation_txt;
+            var tabCell = tr2.insertCell(-1);
+            //check om værdien er 1, og hvis den er indsæt ja.
+            if (arrItems[i].Reservedele == 1) {
+                tabCell.innerHTML = "ja";
+            } else {
+                tabCell.innerHTML = "nej";
+            }
+            var tabCell = tr2.insertCell(-1);
+            tabCell.innerHTML = arrItems[i].Reservedele_txt;
+            var tabCell = tr2.insertCell(-1);
+            tabCell.innerHTML = arrItems[i].OS;
+            var tabCell = tr2.insertCell(-1);
+            //check om værdien er 1, og hvis den er indsæt ja.
+            if (arrItems[i].Til_Salg == 1) {
+                tabCell.innerHTML = "ja";
+            } else {
+                tabCell.innerHTML = "nej";
+            }
+            var tabCell = tr2.insertCell(-1);
+            //check om værdien er 1, og hvis den er indsæt ja.
+            if (arrItems[i].solgt == 1) {
+                tabCell.innerHTML = "ja";
+            } else {
+                tabCell.innerHTML = "nej";
+            }
+            var tabCell = tr2.insertCell(-1);
+            //check om værdien er 1, og hvis den er indsæt ja.
+            if (arrItems[i].skrottet == 1) {
+                tabCell.innerHTML = "ja";
+            } else {
+                tabCell.innerHTML = "nej";
             }
         }
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("tabeldiv");
-        divContainer.appendChild(table);
+ 
+ 
+         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+         var divContainer = document.getElementById("tabeldiv");
+         divContainer.appendChild(table);
     });
 });
 
