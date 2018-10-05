@@ -168,11 +168,13 @@ function rediger() {
             $('#rep3').prop('checked', false)
         } else if (data[0].Reparation == 1) {
             $('#rep3').prop('checked', true)
+            $('#rep4').show();
         }
         if (data[0].Reservedele == 0) {
             $('#res3').prop('checked', false)
         } else if (data[0].Reservedele == 1) {
             $('#res3').prop('checked', true)
+            $('#res4').show();
         }
         if (data[0].Salg == 0) {
             $('#Salg').prop('checked', false)
