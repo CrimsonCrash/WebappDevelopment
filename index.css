@@ -1,11 +1,11 @@
 /*Definere baggrunden for hjemmesiden.*/
 body {
-    background-image: url("baggrund.jpg");
+	background-image: url("baggrund.jpg");
 }
 
 /*Definere udseendet og placeringen af div'en som indeholder alle sidens elementer.*/
 .div {
-	padding:0.01em 16px;
+	padding: 0.01em 16px;
 	width: 30%;
 	height: 350px;
 	position: fixed;
@@ -22,32 +22,32 @@ body {
 	font-size: 40px;
 	font-family: "helvetica";
 	margin-left: 8%;
-	
+
 }
 
 /*Definere input box design, størrelse og placering.*/
 .input {
-		padding:8px;
-		display:block;
-		border:none;
-		border-bottom:1px solid #ccc;
-		width:80.3333333335%;
-		font-size: 30px;
-		margin-top: 2%;
-		margin-left: 8%;
+	padding: 8px;
+	display: block;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	width: 80.3333333335%;
+	font-size: 30px;
+	margin-top: 2%;
+	margin-left: 8%;
 }
 
 /*Definere knappens design, udseende og placering.*/
 .button {
-	color:#fff;
-	background-color:#f44336;
-	border:none;
-	display:inline-block;
-	padding:8px 16px;
-	vertical-align:middle;
-	text-align:center;
-	cursor:pointer;
-	border-radius:8px;
+	color: #fff;
+	background-color: #f44336;
+	border: none;
+	display: inline-block;
+	padding: 8px 16px;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 8px;
 	transition: font-size 2s;
 	font-size: 30px;
 	width: 78%;
@@ -58,7 +58,7 @@ body {
 
 /*Definere knappens effekt når man holder hen over den.*/
 .button:hover {
-	background-color:#802517;
+	background-color: #802517;
 }
 
 /*Definere knappens effekt når der trykkes på den.*/
