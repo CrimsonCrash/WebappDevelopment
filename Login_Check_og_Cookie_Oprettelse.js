@@ -1,9 +1,36 @@
+<<<<<<< HEAD:CookieCode.js
+=======
+$(window).load(function () {
+	checkCookie()
+});
+
+function loginFunction() {
+	//erklæring af variabler
+	var UserName = document.getElementById("UserBox").value;
+	var Password = document.getElementById("PassBox").value;
+
+	//vi bruger JSON til at kalde dataen på vores server
+	if (UserName != "" & Password != "") {
+		$.getJSON("http://192.168.4.34:3000/Brugere/" + UserName + "/" + Password + "", function (data) {
+			if (data.length) {
+				checkCookie(data[0].Bruger_type);
+				window.location.replace("Ordre.html");
+			} else {
+				alert("wrong username or password");
+				return false;
+			}
+		});
+	} else {
+		alert("udfyld venligt brugernavn og password")
+	};
+}
+>>>>>>> 2df1270638cf93426cea3de3c3356a36f90c3ee2:Login_Check_og_Cookie_Oprettelse.js
 
 //opretter cookie med de værdier der er blevet overført fra checkcookie funktionen
 function setCookie(cname, cvalue, exdays) {
 	//opretter en nye variable d som indeholder nuværende dato + exdays.
 	var d = new Date();
-	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	d.setTime(d.getTime() + (exdays * 5 * 1 * 60 * 1000));
 	//opretter variable expires som overføre værdien fra d som udløbs dato.
 	var expires = "expires=" + d.toUTCString();
 	//opretter cookien med de værdier der tidligere er oprettet/modtaget.
@@ -37,6 +64,7 @@ function getCookie(cname) {
 	return "";
 }
 
+<<<<<<< HEAD:CookieCode.js
 //tjekker om der er en cookie der allerede eksisterer
 function checkCookie() {
 	var user = getCookie(document.getElementById(UserBox).value);
@@ -56,10 +84,29 @@ function checkCookie() {
 				if (user != "" && user != null) {
 				setCookie("username", user, 1);
 			}
+=======
+function checkCookie(type) {
+	//modtager user fra getcookie funktionen.
+	var type2 = getCookie("BrugerType");
+	//checker om user værdien i cookien er udfyldt og hvis den er videre stilles der automatisk til ordre siden
+	if (type2 != "") {
+		window.location.replace("Ordre.html");
+		//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
+	} else {
+		//sætter user variablen til værdien fra userbox
+		type2 = type;
+		//checker for at sikre at user ikke er tom eller null
+		if (type2 != "" && type2 != null) {
+			setCookie("BrugerType", type, 1);
+>>>>>>> 2df1270638cf93426cea3de3c3356a36f90c3ee2:Login_Check_og_Cookie_Oprettelse.js
 		}
 	}
 }
 
+<<<<<<< HEAD:CookieCode.js
 //document.getElementById("loginButton").addEventListener("click", checkCookie);
 
 console.log("skriptet svarer")
+=======
+document.getElementById("loginButton").addEventListener("click", loginFunction);
+>>>>>>> 2df1270638cf93426cea3de3c3356a36f90c3ee2:Login_Check_og_Cookie_Oprettelse.js

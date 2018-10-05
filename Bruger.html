@@ -14,7 +14,7 @@
     <link rel="icon" href="Nyan.ico" type="image/x-icon">
 </head>
 
-<body>
+<body onload="skjul();">
     <!-- Link Knapper-->
     <div class="topnav">
         <a href="PC.html">pc'er</a>
@@ -32,13 +32,13 @@
     <div class="container">
         <h2 id="titel"></h2>
         <ul class="ul card" id="liste">
-            
+
         </ul>
     </div>
 
     <!-- Skrald -->
     <!--knappen i bunden af siden, som indeholder en drop down menu.-->
-    <div>
+    <div id="knap">
         <button onclick="document.getElementById('Opret').style.display='block'" class="hover_button">Opret</button>
     </div>
 
@@ -75,11 +75,11 @@
                         <input id="Bruger" name="bruger" type="radio" value="Bruger" checked="checked">
                         <label>Bruger</label>
 
-                        <input id="Superbruger" name="bruger" type="radio" value="Superbruger">
-                        <label>Superbruger</label>
+                        <input id="SuperBruger" name="bruger" type="radio" value="SuperBruger">
+                        <label>SuperBruger</label>
 
                         <input id="Ejer" name="bruger" type="radio" value="Ejer">
-                        <label>Ejer</label>
+                        <label id="Ejer2">Ejer</label>
                     </div>
                     <p>
                         <button class="button" type="submit" value="Submit">Opret Bruger</button>

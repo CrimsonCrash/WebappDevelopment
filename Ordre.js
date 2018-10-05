@@ -1,4 +1,7 @@
 $(window).load(function () {
+
+    checkCookie();
+
     $.getJSON("http://192.168.4.34:3000/Ordre", function (data) {
 
         var arrItems = []; // THE ARRAY TO STORE JSON ITEMS.
@@ -62,8 +65,44 @@ function rediger() {
         document.getElementById('Adresse').value = data[0].Adresse;
         document.getElementById('Model').value = data[0].Model;
         document.getElementById('Mærke').value = data[0].Maerke;
-        document.getElementById('PCID').value = data[0].PC_ID;
+        document.getElementById('PC_ID_Rediger').value = data[0].PC_ID;
     });
     document.getElementById('Rediger_box').style.display = 'block';
     document.getElementById('Rediger').style.display = 'none'
+}
+
+//get cookie funktionen med cname værdien som er overført fra checkcookie.
+function getCookie(cname) {
+    //variablen name oprettes.
+    var name = cname + "=";
+    //opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
+    var ca = document.cookie.split(';');
+    //køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
+    for (var i = 0; i < ca.length; i++) {
+        //variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
+        var c = ca[i];
+        //mens det første tegn i c er et mellem rum udfør nedenstående opgave.
+        while (c.charAt(0) == ' ') {
+            //c er nu lig med c's tidligere værdi minus det første tegn i variablen
+            c = c.substring(1)
+        }
+        //hvis variablen c indeholder variablen name ved start positionen.
+        if (c.indexOf(name) == 0) {
+            //så sendes resten af c retur
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    //modtager user fra getcookie funktionen.
+    var type2 = getCookie("BrugerType");
+    //checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
+    if (type2 != "") {
+
+        //hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
+    } else {
+        window.location.replace("index.html");
+    }
 }
