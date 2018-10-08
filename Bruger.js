@@ -1,27 +1,36 @@
+//opretter variablen type2 til brug i cookie checket.
 var type2 = "";
 
+//function der køres når hjemmesiden indlæses.
 $(window).load(function () {
+    //køre functionen checkcookie
     checkCookie();
+    //henter json fra et url
     $.getJSON("http://192.168.4.34:3000/Brugere", function (data) {
-        var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+        var arrItems = [];      // opretter et array til opbevarin af data
         $.each(data, function (index, value) {
-            arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+            arrItems.push(value);       // dataen skubbes ind i arrayet
         });
-        // ADD JSON DATA TO THE TABLE AS ROWS.
+        // tilføj json data'en til hjemmesiden, i dette tilfælde tilføjes det til en ul = unordered list. Denne køres indtil der ikke er flere brugere i array'et
         for (var i = 0; i < arrItems.length; i++) {
 
+            //opretter list item og giver den en klass og et id.
             li = document.createElement('li');
             li.setAttribute('class','bar');
             li.setAttribute('id',arrItems[i].Bruger_ID);
+            //checker om bruger typen ikke er en bruger.
             if (type2 != "Bruger") {
-                if  (type2 != "SuperBruger") {
+                //hvis brugertypen er Ejer oprettes en slet knap
+                if  (type2 == "Ejer") {
                     span = document.createElement('span');
                     span.innerHTML = "&times;";
                     span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
                     span.setAttribute("class","remove");
                     li.appendChild(span);
                 }
-                if (type2 != "Ejer") {
+                //checker om bruger typen ikke er ejer.
+                if (type2 == "SuperBruger") {
+                    //hvis bruger typen er SuperBruger og brugeren der er ved at blive tilføjet til listen ikke er ejer så oprettes en slet knap
                     if (arrItems[i].Bruger_type != "Ejer") {
                         span = document.createElement('span');
                         span.innerHTML = "&times;";
@@ -31,47 +40,62 @@ $(window).load(function () {
                     }
                 }
             }
+            //tilføjer et billede til list item'en.
             img = document.createElement('img');
             img.setAttribute('src',arrItems[i].Bruger_type + '.png');
             img.setAttribute('class','bar_item image');
             li.appendChild(img);
+            //tilføjer et div til list item'en.
             div = document.createElement('div');
             div.setAttribute('class','bar_item');
             li.appendChild(div);
+            //tilføjer et span til list item'en.
             span2 = document.createElement('span');
             span2.innerHTML = arrItems[i].Navn;
             span2.setAttribute("class","large");
             div.appendChild(span2);
+            //tilføjer et br til div'en
             br = document.createElement('br');
             div.appendChild(br);
+            //tilføjer endnu et span, denne gang til div'en
             span3 = document.createElement('span');
             span3.innerHTML = arrItems[i].Bruger_type;
             div.appendChild(span3);
 
+            //tilføjer list item'en til elementet liste på siden.
             document.getElementById("liste").appendChild(li);
 
         }
     });
 });
 
+//functionen skjul, denne skjuler 
 function skjul() {
+    //hvis brugertypen er Bruger skjules opret bruger knappen.
     if (type2 == "Bruger") {
         document.getElementById("knap").style.display = "none";
     }
+    //hvis brugertypen er Superbruger skjules ejer radioknappen 
     if (type2 == "SuperBruger") {
         document.getElementById("Ejer").style.display = "none";
         document.getElementById("Ejer2").style.display = "none";
     }
 };
+
+//functionen slet
 function slet(i) {
+    //popup boks der spørger indtil om brugeren virkelig skal slettes.
     var r = confirm("Er du sikker på at du vil slette brugeren?!");
+    //hvis brugeren svare ja
     if (r == true) {
+        //skjul brugeren på siden og send slet anmodning til api'en
         document.getElementById(i).style.display = "none";
         var url = "http://192.168.4.34:3000/Bruger/"+i;
         $.ajax({
             url: url,
             method: 'DELETE'
         })
+    //hvis brugeren svare nej sker der ingenting.
     } else {
     
     } 

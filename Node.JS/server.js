@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+//tilladte headers i anmodninger.
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");

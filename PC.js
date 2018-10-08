@@ -1,8 +1,11 @@
+//når documentet indlæses køres denne function.
 $(document).ready(function () {
+    //skjuler reperation og reservedele felter på rediger og opret siderne.
     $('#rep2').hide();
     $('#res2').hide();
     $('#rep4').hide();
     $('#res4').hide();
+    //hvis der klikker på checkboxene over felterne enten skjules eller vises felterne.
     $('#rep').click(function () {
         var $this = $(this);
         if ($this.is(':checked')) {
@@ -37,21 +40,24 @@ $(document).ready(function () {
     });
 });
 
-
+//køre når siden indlæses
 $(window).load(function () {
+    //køre checkcookie functionen
     checkCookie();
+    //køre getjson for at få en liste over alle pcer fra api'en
     $.getJSON("http://192.168.4.34:3000/PCer", function (data) {
 
-        var arrItems = []; // THE ARRAY TO STORE JSON ITEMS.
+        var arrItems = []; // opretter et array til opbevaring af data fra api'en
         $.each(data, function (index, value) {
-            arrItems.push(value); // PUSH THE VALUES INSIDE THE ARRAY.
+            arrItems.push(value); // skubber værdier fra api'en ind i arrayet
         });
 
-         // CREATE DYNAMIC TABLE.
+         // opretter en tabel på siden og definere dens class.
          var table = document.createElement("table");
          table.setAttribute("class", "table");
  
-         var tr = table.insertRow(-1); // TABLE ROW.
+         //opretter variablen tr (table row) og giver det en class.
+         var tr = table.insertRow(-1);
          tr.className = 'table_head';
  
 
@@ -90,17 +96,22 @@ $(window).load(function () {
          th.innerHTML = "Skrottet";
          tr.appendChild(th);
 
-         // ADD JSON DATA TO THE TABLE AS ROWS.
+         // for loopet her under køres indtil der ikke er flere PC'er i arrayet.
         for (var i = 0; i < arrItems.length; i++) {
 
+            //tr2 tilføjes som en tabel række og sættes ind i tabelen som en række.
             tr2 = table.insertRow(-1);
 
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             tabCell.innerHTML = arrItems[i].PC_ID;
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             tabCell.innerHTML = arrItems[i].Maerke;
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             tabCell.innerHTML = arrItems[i].Model;
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
             if (arrItems[i].Reparation == 1) {
@@ -108,8 +119,10 @@ $(window).load(function () {
             } else {
                 tabCell.innerHTML = "nej";
             }
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             tabCell.innerHTML = arrItems[i].Reparation_txt;
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
             if (arrItems[i].Reservedele == 1) {
@@ -117,10 +130,13 @@ $(window).load(function () {
             } else {
                 tabCell.innerHTML = "nej";
             }
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             tabCell.innerHTML = arrItems[i].Reservedele_txt;
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             tabCell.innerHTML = arrItems[i].OS;
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
             if (arrItems[i].Til_Salg == 1) {
@@ -128,6 +144,7 @@ $(window).load(function () {
             } else {
                 tabCell.innerHTML = "nej";
             }
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
             if (arrItems[i].solgt == 1) {
@@ -135,6 +152,7 @@ $(window).load(function () {
             } else {
                 tabCell.innerHTML = "nej";
             }
+            //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
             if (arrItems[i].skrottet == 1) {
@@ -145,48 +163,59 @@ $(window).load(function () {
         }
  
  
-         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+         // der oprettes en variable divcontainer som kobles på tabeldiv.
          var divContainer = document.getElementById("tabeldiv");
+         //divcontainer får koblet den tabel vi lige har oprettet på.
          divContainer.appendChild(table);
     });
 });
 
+//function der køres når der er indtastet et pc id og klikket på rediger.
 function rediger() {
+    //den flytter pc id over til et skjult felt på rediger siden.
     document.getElementById('pcID2').value = document.getElementById('pcID').value;
+    //opretter en variablen med værdien fra pcid.
     var pcid = document.getElementById('pcID').value;
+    //opretter variablen url med et forudbestemt url og pcid.
     var url = 'http://192.168.4.34:3000/PCer/' + pcid;
-    alert("url: " + url);
 
+    //tager json fra url'et
     $.getJSON(url, function (data) {
+        //indsætter værdier fra json på hjemmesiden for udfylde de allerede udfyldte værdier.
         document.getElementById('Maerke').value = data[0].Maerke;
         document.getElementById('Model').value = data[0].Model;
         document.getElementById('Reperation2').value = data[0].Reparation_txt;
         document.getElementById('Reservedele2').value = data[0].Reservedele_txt;
         document.getElementById('OS').value = data[0].OS;
 
+        //checker om reparation er 0 og an på om den er så checkes boksen af.
         if (data[0].Reparation == 0) {
             $('#rep3').prop('checked', false)
         } else if (data[0].Reparation == 1) {
             $('#rep3').prop('checked', true)
             $('#rep4').show();
         }
+        //checker om reservedele er 0 og an på om den er så checkes boksen af.
         if (data[0].Reservedele == 0) {
             $('#res3').prop('checked', false)
         } else if (data[0].Reservedele == 1) {
             $('#res3').prop('checked', true)
             $('#res4').show();
         }
+        //checker om salg er 0 og an på om den er så checkes boksen af.
         if (data[0].Salg == 0) {
             $('#Salg').prop('checked', false)
         } else if (data[0].Salg == 1) {
             $('#Salg').prop('checked', true)
         }
+        //checker om skrottet er 0 og an på om den er så checkes boksen af.
         if (data[0].skrottet == 0) {
             $('#Skrottet').prop('checked', false)
         } else if (data[0].skrottet == 1) {
             $('#Skrottet').prop('checked', true)
         }
     });
+    //skjuler den første rediger box og viser nummer 2.
     document.getElementById('Rediger2').style.display = 'block';
     document.getElementById('Rediger').style.display = 'none'
 }

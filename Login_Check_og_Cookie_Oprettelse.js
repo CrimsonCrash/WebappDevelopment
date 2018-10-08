@@ -1,33 +1,44 @@
+//sætter variablen input til at være værdien fra passbox.
 var input = document.getElementById("PassBox");
+//lytter til events i input boksen, hvis en knap bliver løftet køres en funktion.
 input.addEventListener("keyup", function(event) {
-    event.preventDefault();
+	event.preventDefault();
+	//hvis knappen der løftes har keycode 13 (https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes) så klikkes der på login knappen.
     if (event.keyCode === 13) {
         document.getElementById("loginButton").click();
     }
 });
 
+//funktion der køres ved indlæsning af siden.
 $(window).load(function () {
 	checkCookie()
 });
 
+//function der køres når der klikkes på login knappen
 function loginFunction() {
 	//erklæring af variabler
 	var UserName = document.getElementById("UserBox").value;
 	var Password = document.getElementById("PassBox").value;
 
-	//vi bruger JSON til at kalde dataen på vores server
+	//checker om brugernavn og password er tomt.
 	if (UserName != "" & Password != "") {
+		//afsender en anmodning til api'en med brugernavn og password.
 		$.getJSON("http://192.168.4.34:3000/Brugere/" + UserName + "/" + Password + "", function (data) {
+			//hvis der kommer data tilbage (sker kun hvis der findes en bruger med det brugernavn og password).
 			if (data.length) {
+				//køre checkcookie og checkcookie2 med data fra api'en.
 				checkCookie(data[0].Bruger_type);
 				checkCookie2(data[0].Bruger_ID);
+				//videre stiller brugeren til ordre siden.
 				window.location.replace("Ordre.html");
 			} else {
+				//hvis popup der fortæller brugeren at de har tastet brugernavn eller password forkert.
 				alert("wrong username or password");
 				return false;
 			}
 		});
 	} else {
+		//hvis brugernavn og password er tomt vises en popup boks der beder brugeren indtaste informationen.
 		alert("udfyld venligt brugernavn og password")
 	};
 }
@@ -101,5 +112,5 @@ function checkCookie2(ID) {
 	}
 }
 
-
+//lytter efter når der klikkes på login knappen og køre loginfunction når der klikkes.
 document.getElementById("loginButton").addEventListener("click", loginFunction);
