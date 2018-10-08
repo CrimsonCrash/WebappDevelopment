@@ -2,28 +2,34 @@
 <html>
 
 <head>
+	<!--definere karakter sættet der bruges på hjemmesiden-->
 	<meta charset="UTF-8">
+	<!--definere hjemmesiden titel-->
 	<title>Ordre</title>
 	<!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens skærm størrelse-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--reference til css filen-->
 	<link rel="stylesheet" type="text/css" href="Ordre_PC.css">
-	<!--Tilføjer referencer til javascript filer, heriblandt googles jquery fil-->
+	<!--reference til jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<!--reference til vores javascript fil-->
 	<script src="Ordre.js"></script>
+	<!--reference til hjemmeside iconet-->
 	<link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
 	<link rel="icon" href="Nyan.ico" type="image/x-icon">
 </head>
 
+<!--køre en funktion når body indlæses-->
 <body onload="page_load();">
 
-	<!-- Link Knapper-->
+	<!--Navigations bar-->
 	<div class="topnav">
 		<a href="PC.html">pc'er</a>
 		<a href="#" class="active">Ordre</a>
 		<a href="Bruger.html">Oprettelse af brugere</a>
 	</div>
 
-	<!-- bistands skalerings løsning-->
+	<!--bistands skalerings løsning-->
 	<br>
 	<br>
 	<br>
@@ -34,7 +40,6 @@
 
 	
 	<div>
-
 		<!--knappen i bunden af siden, som indeholder en drop down menu.-->
 		<div class="dropdown">
 			<button class="hover_button">opret/rediger</button>
@@ -51,28 +56,55 @@
 				<div class="modal-header">
 					<!--knap til at lukke modal vinduet-->
 					<span onclick="document.getElementById('Opret').style.display='none'" class="close">&times;</span>
+					<!--titel på vinduet-->
 					<h2>Opret</h2>
 				</div>
 				<div>
+					<!--definere hvor formen sender sine data hen og hvilken metode der bruges.-->
 					<form action="http://192.168.4.34:3000/Ordre_opret" method="POST">
-						<p><label class="label">Navn</label>
-							<input name="Navn" type="text" class="input" required></p>
-						<p><label class="label">Email</label>
-							<input name="Email" type="text" class="input" required></p>
-						<p><label class="label">Tlf</label>
-							<input name="Tlf" type="text" class="input" required></p>
-						<p><label class="label">Adresse</label>
-							<input name="Adresse" type="text" class="input" required></p>
-						<p><label class="label">Model</label>
-							<input name="Model" type="text" class="input" required></p>
-						<p><label class="label">Mærke</label>
-							<input name="Maerke" type="text" class="input" required></p>
-						<p><label class="label">PC_ID på solgt pc</label>
-							<input id="PC_ID" name="PC_ID" type="text" class="input"></p>
-						<p hidden><label class="label">Ansat</label>
-							<input id="ansat1" name="Ansat" type="text" class="input"></p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
 						<p>
-							<button class="button" type="submit" value="Submit">Opret Ordre</button></p>
+							<label class="label">Navn</label>
+							<input name="Navn" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Email</label>
+							<input name="Email" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Tlf</label>
+							<input name="Tlf" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Adresse</label>
+							<input name="Adresse" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Model</label>
+							<input name="Model" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Mærke</label>
+							<input name="Maerke" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">PC_ID på solgt pc</label>
+							<input id="PC_ID" name="PC_ID" type="text" class="input">
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p hidden><label class="label">Ansat</label>
+							<input id="ansat1" name="Ansat" type="text" class="input">
+						</p>
+						<p>
+							<!--knap som afsender formen til hjemmesiden som er defineret under form oprettelsen.-->
+							<button class="button" type="submit" value="Submit">Opret Ordre</button>
+						</p>
 					</form>
 				</div>
 			</div>
@@ -84,14 +116,20 @@
 				<div class="modal-header">
 					<!--knap til at lukke modal vinduet-->
 					<span onclick="document.getElementById('Rediger').style.display='none'" class="close">&times;</span>
+					<!--titel på vinduet-->
 					<h2>Rediger</h2>
 				</div>
 				<div>
 					<form>
-						<p><label class="label">Ordre_ID</label>
-							<input name="Popup_Ordre_ID" id="Popup_Ordre_ID" type="text" class="input"></p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
 						<p>
-							<button onclick="rediger()" class="button" type="button" value="Submit">Rediger</button></p>
+							<label class="label">Ordre_ID</label>
+							<input name="Popup_Ordre_ID" id="Popup_Ordre_ID" type="text" class="input">
+						</p>
+						<p>
+							<!--opretter en knap som aktiveren en funktion når der klikkes på den-->
+							<button onclick="rediger()" class="button" type="button" value="Submit">Rediger</button>
+						</p>
 					</form>
 				</div>
 			</div>
@@ -102,30 +140,60 @@
 				<div class="modal-header">
 					<!--knap til at lukke modal vinduet-->
 					<span onclick="document.getElementById('Rediger_box').style.display='none'" class="close">&times;</span>
+					<!--titel på vinduet-->
 					<h2>Rediger</h2>
 				</div>
 				<div>
+					<!--definere hvor formen sender sine data hen og hvilken metode der bruges.-->
 					<form action="http://192.168.4.34:3000/Ordre_opdater" method="POST">
+						<!--opretter en paragraph som indeholder en label og et input felt-->
 						<p hidden>
-							<input name="OrdreID" id="Hidden_Ordre_ID" type="text" class="input" hidden></p>
-						<p><label class="label">Navn</label>
-							<input name="Navn" id="Navn" type="text" class="input" required></p>
-						<p><label class="label">Email</label>
-							<input name="Email" id="Email" type="text" class="input" required></p>
-						<p><label class="label">Tlf</label>
-							<input name="Tlf" id="Tlf" type="text" class="input" required></p>
-						<p><label class="label">Adresse</label>
-							<input name="Adresse" id="Adresse" type="text" class="input" required></p>
-						<p><label class="label">Model</label>
-							<input name="Model" id="Model" type="text" class="input" required></p>
-						<p><label class="label">Mærke</label>
-							<input name="Maerke" id="Mærke" type="text" class="input" required></p>
-						<p><label class="label">PC_ID på solgt pc</label>
-							<input name="PCID" id="PC_ID_Rediger" type="text" class="input"></p>
-						<p hidden><label class="label">Ansat</label>
-							<input id="ansat2" name="Ansat" type="text" class="input"></p>
+							<input name="OrdreID" id="Hidden_Ordre_ID" type="text" class="input" hidden>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
 						<p>
-							<button class="button" type="submit" value="Submit">Opdater</button></p>
+							<label class="label">Navn</label>
+							<input name="Navn" id="Navn" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Email</label>
+							<input name="Email" id="Email" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Tlf</label>
+							<input name="Tlf" id="Tlf" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Adresse</label>
+							<input name="Adresse" id="Adresse" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Model</label>
+							<input name="Model" id="Model" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">Mærke</label>
+							<input name="Maerke" id="Mærke" type="text" class="input" required>
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p>
+							<label class="label">PC_ID på solgt pc</label>
+							<input name="PCID" id="PC_ID_Rediger" type="text" class="input">
+						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p hidden>
+							<label class="label">Ansat</label>
+							<input id="ansat2" name="Ansat" type="text" class="input">
+						</p>
+						<p>
+							<!--knap som afsender formen til hjemmesiden som er defineret under form oprettelsen.-->
+							<button class="button" type="submit" value="Submit">Opdater</button>
+						</p>
 					</form>
 				</div>
 			</div>

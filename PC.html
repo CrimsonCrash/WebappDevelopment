@@ -2,30 +2,34 @@
 <html>
 
 <head>
+	<!--definere karakter sættet der bruges på hjemmesiden-->
 	<meta charset="UTF-8">
+	<!--definere hjemmesiden titel-->
 	<title>PC</title>
 	<!--koden herunder fortæller hjemmesiden af den skal skalere ud fra enhedens skærm størrelse-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--reference til css filen-->
 	<link rel="stylesheet" type="text/css" href="Ordre_PC.css">
+	<!--reference til jquery-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<!--reference til vores javascript fil-->
 	<script src="PC.js"></script>
+	<!--reference til hjemmeside iconet-->
 	<link rel="shortcut icon" href="Nyan.ico" type="image/x-icon">
 	<link rel="icon" href="Nyan.ico" type="image/x-icon">
 </head>
 
+<!--køre en funktion når body indlæses-->
 <body onload="load();">
 
-	<!-- Link Knapper-->
+	<!--Navigations bar-->
 	<div class="topnav">
 		<a href="#" class="active">pc'er</a>
 		<a href="Ordre.html">Ordre</a>
 		<a href="Bruger.html">Oprettelse af brugere</a>
 	</div>
 
-
-	<!-- bistands skalerings løsning-->
-
-
+	<!--bistands skalerings løsning-->
 	<br>
 	<br>
 	<br>
@@ -38,7 +42,7 @@
 	<div class="dropdown">
 		<button class="hover_button">Opret/Rediger</button>
 		<div class="dropdown-content" style="top:-100%">
-			<!--knapper i dropdown menuen der åbner et modal vindue.-->
+			<!--knapper i dropdown menuen der åbner modal vinduer-->
 			<button onclick="document.getElementById('Opret').style.display='block'">Opret</button>
 			<button onclick="document.getElementById('Rediger').style.display='block'">Rediger</button>
 		</div>
@@ -51,30 +55,62 @@
 			<div class="modal-header">
 				<!--knap til at lukke modal vinduet-->
 				<span onclick="document.getElementById('Opret').style.display='none'" class="close">&times;</span>
+				<!--titel på vinduet-->
 				<h2>Opret</h2>
 			</div>
 			<div>
+				<!--definere hvor formen sender sine data hen og hvilken metode der bruges.-->
 				<form action="http://192.168.4.34:3000/PCer_opret" method="POST">
-					<p><label class="label">Mærke</label>
-						<input name="Maerke" type="text" class="input"></p>
-					<p><label class="label">Model</label>
-						<input name="Model" type="text" class="input"></p>
-					<p><label class="label">Skal pc'en repareres?</label>
-						<input name="Reperation1" id="rep" class="check" type="checkbox"></p>
-					<p id=rep2><label class="label">Hvad skal repareres?</label>
-						<input name="Reperation2" type="text" class="input"></p>
-					<p><label class="label">Er der bestilt reservedele?</label>
-						<input name="Reservedele1" id="res" class="check" type="checkbox"></p>
-					<p id="res2"><label class="label">Hvilke reservedele er bestilt?</label>
-						<input name="Reservedele2" type="text" class="input"></p>
-					<p><label class="label">Hvilket OS er intalleret?</label>
-						<input name="OS" type="text" class="input"></p>
-					<p><label class="label">Er pc'en klar til salg?</label>
-						<input name="Salg" class="check" type="checkbox"></p>
-					<p><label class="label">Er pc'en skrottet?</label>
-						<input name="Skrottet" class="check" type="checkbox"></p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
 					<p>
-						<button class="button" type="submit" value="Submit">Opret PC</button></p>
+						<label class="label">Mærke</label>
+						<input name="Maerke" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Model</label>
+						<input name="Model" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Skal pc'en repareres?</label>
+						<input name="Reperation1" id="rep" class="check" type="checkbox">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p id=rep2>
+						<label class="label">Hvad skal repareres?</label>
+						<input name="Reperation2" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Er der bestilt reservedele?</label>
+						<input name="Reservedele1" id="res" class="check" type="checkbox">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p id="res2">
+						<label class="label">Hvilke reservedele er bestilt?</label>
+						<input name="Reservedele2" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Hvilket OS er intalleret?</label>
+						<input name="OS" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Er pc'en klar til salg?</label>
+						<input name="Salg" class="check" type="checkbox">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Er pc'en skrottet?</label>
+						<input name="Skrottet" class="check" type="checkbox">
+					</p>
+
+					<p>
+						<!--knap som afsender formen til hjemmesiden som er defineret under form oprettelsen.-->
+						<button class="button" type="submit" value="Submit">Opret PC</button>
+					</p>
 				</form>
 			</div>
 		</div>
@@ -86,13 +122,16 @@
 			<div class="modal-header">
 				<!--knap til at lukke modal vinduet-->
 				<span onclick="document.getElementById('Rediger').style.display='none'" class="close">&times;</span>
+				<!--titel på vinduet-->
 				<h2>Rediger</h2>
 			</div>
 			<div>
+				<!--opretter en paragraph som indeholder en label og et input felt-->
 				<p>
 					<label class="label">Indtast pcID</label>
 					<input id="pcID" type="text" class="input"></p>
 				<p>
+					<!--opretter en knap som aktiveren en funktion når der klikkes på den-->
 					<button onclick="rediger()" class="button">Rediger</button></p>
 			</div>
 		</div>
@@ -103,32 +142,66 @@
 			<div class="modal-header">
 				<!--knap til at lukke modal vinduet-->
 				<span onclick="document.getElementById('Rediger2').style.display='none'" class="close">&times;</span>
+				<!--titel på vinduet-->
 				<h2>Rediger</h2>
 			</div>
 			<div>
+				<!--definere hvor formen sender sine data hen og hvilken metode der bruges.-->
 				<form action="http://192.168.4.34:3000/PCer_opdater" method="POST">
-					<p hidden><label class="label">pc_ID</label>
-						<input name="pcid" id="pcID2" type="text" class="input"></p>
-					<p><label class="label">Mærke</label>
-						<input name="Maerke" id="Maerke" type="text" class="input"></p>
-					<p><label class="label">Model</label>
-						<input name="Model" id="Model" type="text" class="input"></p>
-					<p><label class="label">Skal pc'en repareres?</label>
-						<input name="Reperation1" id="rep3" class="check" type="checkbox"></p>
-					<p id=rep4><label class="label">Hvad skal repareres?</label>
-						<input name="Reperation2" id="Reperation2" type="text" class="input"></p>
-					<p><label class="label">Er der bestilt reservedele?</label>
-						<input name="Reservedele1" id="res3" class="check" type="checkbox"></p>
-					<p id="res4"><label class="label">Hvilke reservedele er bestilt?</label>
-						<input name="Reservedele2" id="Reservedele2" type="text" class="input"></p>
-					<p><label class="label">Hvilket OS er intalleret?</label>
-						<input name="OS" id="OS" type="text" class="input"></p>
-					<p><label class="label">Er pc'en klar til salg?</label>
-						<input name="Salg" id="Salg" class="check" type="checkbox"></p>
-					<p><label class="label">Er pc'en skrottet?</label>
-						<input name="Skrottet" id="Skrottet" class="check" type="checkbox"></p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p hidden>
+						<label class="label">pc_ID</label>
+						<input name="pcid" id="pcID2" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
 					<p>
-						<button class="button" type="submit" value="Submit">Rediger PC</button></p>
+						<label class="label">Mærke</label>
+						<input name="Maerke" id="Maerke" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Model</label>
+						<input name="Model" id="Model" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Skal pc'en repareres?</label>
+						<input name="Reperation1" id="rep3" class="check" type="checkbox">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p id=rep4>
+						<label class="label">Hvad skal repareres?</label>
+						<input name="Reperation2" id="Reperation2" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Er der bestilt reservedele?</label>
+						<input name="Reservedele1" id="res3" class="check" type="checkbox">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p id="res4">
+						<label class="label">Hvilke reservedele er bestilt?</label>
+						<input name="Reservedele2" id="Reservedele2" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Hvilket OS er intalleret?</label>
+						<input name="OS" id="OS" type="text" class="input">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Er pc'en klar til salg?</label>
+						<input name="Salg" id="Salg" class="check" type="checkbox">
+					</p>
+					<!--opretter en paragraph som indeholder en label og et input felt-->
+					<p>
+						<label class="label">Er pc'en skrottet?</label>
+						<input name="Skrottet" id="Skrottet" class="check" type="checkbox">
+					</p>
+					<p>
+						<!--knap som afsender formen til hjemmesiden som er defineret under form oprettelsen.-->
+						<button class="button" type="submit" value="Submit">Rediger PC</button>
+					</p>
 				</form>
 			</div>
 		</div>

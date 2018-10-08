@@ -1,4 +1,4 @@
-/* Add a black background color to the top navigation */
+/*tilføjer en rød baggrund til navigations baren*/
 .topnav {
 	background-color: #f44336;
 	overflow: hidden;
@@ -10,7 +10,7 @@
 	z-index: 1;
 }
 
-/* Style the links inside the navigation bar */
+/*design af teksten inde i navigations baren*/
 .topnav a {
 	float: left;
 	color: #f2f2f2;
@@ -26,46 +26,53 @@
 	transition: background-color 1s;
 }
 
-/* Change the color of links on hover */
+/*skift baggrunds farve på linket når der holdes over det*/
 .topnav a:hover {
 	background-color: #802517;
 }
 
-/* Add a color to the active/current link */
+/*tilføj en farve til det link der er aktivt på nuværende tidspunkt*/
 .topnav a.active {
 	background-color: #ddd;
 	color: white;
 }
 
+/*definere padding på den container der indeholder bruger listen*/
 .container {
 	padding: 0.01em 16px;
 }
 
+/*definere udseende på den unordered list som indeholder brugerne*/
 .ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 0
 }
 
+/*definere udseende på de items der er inde i listen*/
 .ul li {
 	padding: 8px 16px;
 	border-bottom: 1px solid #ddd
 }
 
+/*definere udseende på den sidste item i listen*/
 .ul li:last-child {
 	border-bottom: none;
 }
 
+/*definere skyggen på boxen som indeholder en liste af brugere.*/
 .card {
 	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
+/*definere udseende på en li (liste item)*/
 .bar {
 	width: 100%;
 	overflow: hidden;
 	display: inline-block;
 }
 
+/*definere udseende på en item inde i en list item*/
 .bar_item {
 	padding: 8px 16px;
 	float: left;
@@ -75,15 +82,18 @@
 	outline: 0;
 }
 
+/*definere en stor font størrelse, bruges i dette tilfælde på brugerens navn i bruger listen.*/
 .large {
 	font-size: 18px;
 }
 
+/*Definere billedets udseende i bruger listen*/
 .image {
 	width: 85px;
 	border-radius: 50%
 }
 
+/*definere udseende af remove knappen i bruger listen*/
 .remove {
 	border: none;
 	display: inline-block;
@@ -102,6 +112,7 @@
 	white-space: normal;
 }
 
+/*definere udseende af knappen man kan klikke på for at åbne siden for bruger oprettelse*/
 .hover_button {
 	right: 1.5%;
 	bottom: 1.5%;
@@ -116,29 +127,25 @@
 	cursor: pointer;
 }
 
-/* The Modal (background) */
+/*modal vinduets baggrund*/
 .modal {
+	/*skjult som standard*/
 	display: none;
-	/* Hidden by default */
+	/*forbliver på sin plads*/
 	position: fixed;
-	/* Stay in place */
+	/*altid øverst*/
 	z-index: 1;
-	/* Sit on top */
 	left: 0;
 	top: 0;
 	width: 100%;
-	/* Full width */
 	height: 100%;
-	/* Full height */
+	/*slår scroll til hvis nødvendigt*/
 	overflow: auto;
-	/* Enable scroll if needed */
 	background-color: rgb(0, 0, 0);
-	/* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4);
-	/* Black w/ opacity */
 }
 
-/* Modal Content */
+/*definere designet på div'en som indeholder modal indeholdet*/
 .modal-content {
 	position: relative;
 	top: 10%;
@@ -153,7 +160,7 @@
 }
 
 
-/* Add Animation */
+/*tilføjer en animation til når modal vinduet dukker op*/
 @keyframes animatetop {
 	from {
 		top: -300px;
@@ -166,7 +173,7 @@
 	}
 }
 
-/* The Close Button */
+/*definere udseende af luk vindue knappen*/
 .close {
 	color: #f2f2f2;
 	float: right;
@@ -174,6 +181,7 @@
 	font-weight: bold;
 }
 
+/*definere udseendet af luk knappen når der holdes over den*/
 .close:hover,
 .close:focus {
 	color: black;
@@ -181,7 +189,7 @@
 	cursor: pointer;
 }
 
-/* Modal Header */
+/*definere udseendet af modal overskriften*/
 .modal-header {
 	padding: 2px 16px;
 	background-color: #f44336;
@@ -236,6 +244,7 @@
 	transform: translateY(1px);
 }
 
+/*definere udseende/placering af radio buttons*/
 .radio_btn {
 	margin-left: 8%;
 }
