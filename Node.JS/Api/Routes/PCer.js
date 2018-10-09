@@ -157,6 +157,11 @@ router.post("/PCer_opdater", (req, res) => {
     } else {
         var salg = 1;
     }
+    if (!req.body.Optaget) {
+        var Optaget = 0;
+    } else {
+        var Optaget = 1;
+    }
     if (!req.body.Skrottet) {
         var skrottet = 0;
     } else {
@@ -164,7 +169,7 @@ router.post("/PCer_opdater", (req, res) => {
     }
 
     //query string som afsendes til mysql serveren.
-    const queryString = "UPDATE PCer SET Maerke = '" + maerke + "', Model = '" + model + "', Reparation = " + reperation + ", Reparation_txt = '" + reperation2 + "', Reservedele = " + reservedele + ", Reservedele_txt = '" + reservedele2 + "', OS = '" + os + "', Til_Salg = " + salg + ", Skrottet = " + skrottet + " WHERE PC_ID = '" + pcid + "'"
+    const queryString = "UPDATE PCer SET Maerke = '" + maerke + "', Model = '" + model + "', Reparation = " + reperation + ", Reparation_txt = '" + reperation2 + "', Reservedele = " + reservedele + ", Reservedele_txt = '" + reservedele2 + "', OS = '" + os + "', Til_Salg = " + salg + ", Optaget = " + Optaget + ", Skrottet = " + skrottet + " WHERE PC_ID = '" + pcid + "'"
     //commando der aktivere getconnection og afsender query til forbindelsen.
     getConnection().query(queryString, (err, results, fields) => {
         //fejl håndtering.

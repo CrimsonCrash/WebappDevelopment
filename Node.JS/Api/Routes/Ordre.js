@@ -136,20 +136,6 @@ router.post("/Ordre_opdater", (req, res) => {
 
             console.log("querystring: " + queryString)
             //hvis query'et virker videre stilles brugeren til siden han kom fra.
-        })
-        //query string som afsendes til mysql serveren.
-        queryString = "UPDATE PCer SET Optaget = 1 WHERE PC_ID = '" + pcid + "';";
-        //commando der aktivere getconnection og afsender query til forbindelsen.
-        getConnection().query(queryString, (err, results, fields) => {
-            //fejl håndtering.
-            if (err) {
-                console.log("fejlede i at indsætte Ordre" + err)
-                res.sendStatus(500)
-                return
-            }
-
-            console.log("querystring: " + queryString)
-            //hvis query'et virker videre stilles brugeren til siden han kom fra.
             res.redirect('http://192.168.4.34/Ordre.html');
         })
     }

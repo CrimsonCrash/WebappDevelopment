@@ -203,10 +203,16 @@ function rediger() {
             $('#res4').show();
         }
         //checker om salg er 0 og an på om den er så checkes boksen af.
-        if (data[0].Salg == 0) {
+        if (data[0].Til_Salg == 0) {
             $('#Salg').prop('checked', false)
-        } else if (data[0].Salg == 1) {
+        } else if (data[0].Til_Salg == 1) {
             $('#Salg').prop('checked', true)
+        }
+        //checker om Optaget er 0 og an på om den er så checkes boksen af.
+        if (data[0].Optaget == 0) {
+            $('#Optaget').prop('checked', false)
+        } else if (data[0].Optaget == 1) {
+            $('#Optaget').prop('checked', true)
         }
         //checker om skrottet er 0 og an på om den er så checkes boksen af.
         if (data[0].Skrottet == 0) {
