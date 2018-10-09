@@ -1,12 +1,12 @@
 //sætter variablen input til at være værdien fra passbox.
 var input = document.getElementById("PassBox");
 //lytter til events i input boksen, hvis en knap bliver løftet køres en funktion.
-input.addEventListener("keyup", function(event) {
+input.addEventListener("keyup", function (event) {
 	event.preventDefault();
 	//hvis knappen der løftes har keycode 13 (https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes) så klikkes der på login knappen.
-    if (event.keyCode === 13) {
-        document.getElementById("loginButton").click();
-    }
+	if (event.keyCode === 13) {
+		document.getElementById("loginButton").click();
+	}
 });
 
 //funktion der køres ved indlæsning af siden.
@@ -84,7 +84,7 @@ function checkCookie(type) {
 	//checker om user værdien i cookien er udfyldt og hvis den er videre stilles der automatisk til ordre siden
 	if (type2 != "") {
 		window.location.replace("Ordre.html");
-	//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
+		//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
 	} else {
 		//sætter user variablen til værdien fra userbox
 		type2 = type;
@@ -101,7 +101,7 @@ function checkCookie2(ID) {
 	//checker om user værdien i cookien er udfyldt og hvis den er videre stilles der automatisk til ordre siden
 	if (ID2 != "") {
 		window.location.replace("Ordre.html");
-	//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
+		//hvis cookie værdien ikke er udfyldt oprettes en cookie gennem setcookie funktionen
 	} else {
 		//sætter user variablen til værdien fra userbox
 		ID2 = ID;

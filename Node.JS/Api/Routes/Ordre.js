@@ -119,11 +119,12 @@ router.post("/Ordre_opdater", (req, res) => {
     const maerke = req.body.Maerke
     const pcid = req.body.PCID
     const ansat = req.body.Ansat
+    const OrdreStatus = req.body.OrdreStatus
 
     //if der checker om pc_id er tomt
     if (!req.body.PCID.lenght) {
         //query string som afsendes til mysql serveren.
-        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = null, Ansat = " + ansat + " WHERE Ordre_ID = " + ordreid + ";";
+        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = null, Ansat = " + ansat + ", Ordre_Status = '" + OrdreStatus + "' WHERE Ordre_ID = " + ordreid + ";";
         //commando der aktivere getconnection og afsender query til forbindelsen.
         getConnection().query(queryString, (err, results, fields) => {
             //fejl håndtering.
@@ -140,7 +141,7 @@ router.post("/Ordre_opdater", (req, res) => {
     }
     else {
         //query string som afsendes til mysql serveren.
-        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = " + ansat + " WHERE Ordre_ID = " + ordreid + "";
+        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = " + ansat + ", Ordre_Status = '" + OrdreStatus + "' WHERE Ordre_ID = " + ordreid + ";";
         //commando der aktivere getconnection og afsender query til forbindelsen.
         getConnection().query(queryString, (err, results, fields) => {
             //fejl håndtering.

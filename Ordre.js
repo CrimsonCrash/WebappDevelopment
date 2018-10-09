@@ -40,7 +40,7 @@ $(window).load(function () {
             tr.appendChild(th); // th proppes på tr
         }
 
-        
+
 
         //køre indtil der ikke er flere arrays i array'et
         for (var i = 0; i < arrItems.length; i++) {
@@ -82,6 +82,12 @@ function rediger() {
         document.getElementById('Model').value = data[0].Model;
         document.getElementById('Mærke').value = data[0].Maerke;
         document.getElementById('PC_ID_Rediger').value = data[0].PC_ID;
+        if (data[0].Ordre_Status = "Annulleret") {
+            document.getElementById("Annulleret").checked = true;
+        } else {
+            document.getElementById("Gennemført").checked = true;
+        }
+
     });
     //skjuler den første rediger box og viser nummer 2.
     document.getElementById('Rediger_box').style.display = 'block';
@@ -90,39 +96,39 @@ function rediger() {
 
 //get cookie funktionen med cname værdien som er overført fra checkcookie.
 function getCookie(cname) {
-	//variablen name oprettes.
-	var name = cname + "=";
-	//opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
-	var ca = document.cookie.split(';');
-	//køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
-	for (var i = 0; i < ca.length; i++) {
-		//variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
-		var c = ca[i];
-		//mens det første tegn i c er et mellem rum udfør nedenstående opgave.
-		while (c.charAt(0) == ' ') {
-			//c er nu lig med c's tidligere værdi minus det første tegn i variablen
-			c = c.substring(1)
-		}
-		//hvis variablen c indeholder variablen name ved start positionen.
-		if (c.indexOf(name) == 0) {
-			//så sendes resten af c retur
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
+    //variablen name oprettes.
+    var name = cname + "=";
+    //opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
+    var ca = document.cookie.split(';');
+    //køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
+    for (var i = 0; i < ca.length; i++) {
+        //variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
+        var c = ca[i];
+        //mens det første tegn i c er et mellem rum udfør nedenstående opgave.
+        while (c.charAt(0) == ' ') {
+            //c er nu lig med c's tidligere værdi minus det første tegn i variablen
+            c = c.substring(1)
+        }
+        //hvis variablen c indeholder variablen name ved start positionen.
+        if (c.indexOf(name) == 0) {
+            //så sendes resten af c retur
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 function checkCookie() {
-	//modtager user fra getcookie funktionen.
+    //modtager user fra getcookie funktionen.
     type2 = getCookie("BrugerType");
     ID2 = getCookie("ID");
-	//checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
-	if (type2 != "") {
-        
-	//hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
-	} else {
-		window.location.replace("index.html");
-	}
+    //checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
+    if (type2 != "") {
+
+        //hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
+    } else {
+        window.location.replace("index.html");
+    }
 }
 
 //når hjemmesiden indlæses indsættes ansat id'et i de 2 skjulte ansat felter på siden.
