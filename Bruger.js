@@ -1,13 +1,18 @@
 //opretter variablen type2 til brug i cookie checket.
 var type2 = "";
 
+//opretter et array til opbevarin af data
+var arrItems = [];
+var brugernavn = "";
+var brugernavn2 = "";
+var eksistere = 1;
+
 //function der køres når hjemmesiden indlæses.
 $(window).load(function () {
     //køre functionen checkcookie
     checkCookie();
     //henter json fra et url
     $.getJSON("http://192.168.4.34:3000/Brugere", function (data) {
-        var arrItems = [];      // opretter et array til opbevarin af data
         $.each(data, function (index, value) {
             arrItems.push(value);       // dataen skubbes ind i arrayet
         });
@@ -99,6 +104,24 @@ function slet(i) {
     } else {
     
     } 
+}
+
+function validate() {
+    for (var i = 0; i < arrItems.length; i++) {
+        brugernavn = arrItems[i].Brugernavn;
+        brugernavn2 = document.getElementById("brugernavn").value;
+        var sammenligning = brugernavn.localeCompare(brugernavn2, 'da', {sensitivity: 'accent'});
+        if  (sammenligning == 0) {
+            eksistere = 0;
+        }
+    }
+    if (eksistere == 0) {
+        brugernavn2 = brugernavn2+(Math.floor(Math.random() * 9000) + 1000);
+        alert("der eksistere allerede en bruger med dette brugernavn, prøv i stedet med: " + brugernavn2)
+        return false;
+    } else {
+        return true;
+    }
 }
 
 //get cookie funktionen med cname værdien som er overført fra checkcookie.

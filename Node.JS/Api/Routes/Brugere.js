@@ -22,7 +22,7 @@ function getConnection() {
 //håndtere anmodninger til /Bruger
 router.get("/Brugere", (req, res) => {
     //query string som afsendes til mysql serveren.
-    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere ORDER BY Navn"
+    const queryString = "SELECT Bruger_ID, Brugernavn, Navn, Bruger_type from Brugere ORDER BY Navn"
     //commando der aktivere getconnection og afsender query til forbindelsen.
     getConnection().query(queryString, (err, rows, fields) => {
         //fejl håndtering.
