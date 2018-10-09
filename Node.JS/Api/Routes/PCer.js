@@ -59,12 +59,12 @@ router.get("/PCer/:ID", (req, res) => {
 
 
 //håndtere anmodninger til /PCer-ikke-solgt
-router.get("/PCer-ikke-solgt", (req, res) => {
+router.get("/PCer-ikke-Optaget", (req, res) => {
 
     //tager ID fra url'et og putter det ind i variablen PCID
     const OrdreID = req.params.ID
     //query string som afsendes til mysql serveren.
-    const queryString = "SELECT * from PCer WHERE Solgt = 0"
+    const queryString = "SELECT * from PCer WHERE Optaget = 0"
     //commando der aktivere getconnection og afsender query til forbindelsen.
     getConnection().query(queryString, (err, rows, fields) => {
         //fejl håndtering.
@@ -86,7 +86,6 @@ router.post("/PCer_opret", (req, res) => {
     var reperation2 = "";
     var reservedele2 = "";
     //hapser variablerne fra post requesten.
-    const pcid = req.body.pcid;
     const maerke = req.body.Maerke;
     const model = req.body.Model;
     //checker variablerne i nogle requests og definere værdien ud fra dem.

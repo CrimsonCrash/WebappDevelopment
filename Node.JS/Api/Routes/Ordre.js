@@ -138,7 +138,7 @@ router.post("/Ordre_opdater", (req, res) => {
             //hvis query'et virker videre stilles brugeren til siden han kom fra.
         })
         //query string som afsendes til mysql serveren.
-        queryString = "UPDATE PCer SET solgt = 1 WHERE PC_ID = '" + pcid + "';";
+        queryString = "UPDATE PCer SET Optaget = 1 WHERE PC_ID = '" + pcid + "';";
         //commando der aktivere getconnection og afsender query til forbindelsen.
         getConnection().query(queryString, (err, results, fields) => {
             //fejl håndtering.

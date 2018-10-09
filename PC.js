@@ -147,7 +147,7 @@ $(window).load(function () {
             //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
-            if (arrItems[i].solgt == 1) {
+            if (arrItems[i].Optaget == 1) {
                 tabCell.innerHTML = "ja";
             } else {
                 tabCell.innerHTML = "nej";
@@ -155,7 +155,7 @@ $(window).load(function () {
             //tabcell oprettes og sættes ind i tr2 som en celle.
             var tabCell = tr2.insertCell(-1);
             //check om værdien er 1, og hvis den er indsæt ja.
-            if (arrItems[i].skrottet == 1) {
+            if (arrItems[i].Skrottet == 1) {
                 tabCell.innerHTML = "ja";
             } else {
                 tabCell.innerHTML = "nej";
@@ -209,7 +209,7 @@ function rediger() {
             $('#Salg').prop('checked', true)
         }
         //checker om skrottet er 0 og an på om den er så checkes boksen af.
-        if (data[0].skrottet == 0) {
+        if (data[0].Skrottet == 0) {
             $('#Skrottet').prop('checked', false)
         } else if (data[0].skrottet == 1) {
             $('#Skrottet').prop('checked', true)
