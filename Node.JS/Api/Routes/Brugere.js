@@ -43,7 +43,7 @@ router.get("/Brugere/:ID", (req, res) => {
     //tager ID fra url'et og putter det ind i variablen BrugerID
     const BrugerID = req.params.ID
     //query string som afsendes til mysql serveren.
-    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn = ?"
+    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn like ?"
     //commando der aktivere getconnection og afsender query til forbindelsen.
     getConnection().query(queryString, [BrugerID], (err, rows, fields) => {
         //fejl håndtering.
@@ -65,7 +65,7 @@ router.get("/Brugere/:Username/:Password", (req, res) => {
     const Username = req.params.Username
     const Password = req.params.Password
     //query string som afsendes til mysql serveren.
-    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn LIKE ? AND Adgangskode LIKE ?"
+    const queryString = "SELECT Bruger_ID, Navn, Bruger_type from Brugere WHERE Brugernavn LIKE ? AND Adgangskode like binary ?"
     //commando der aktivere getconnection og afsender query til forbindelsen.
     getConnection().query(queryString, [Username, Password], (err, rows, fields) => {
         //fejl håndtering.
