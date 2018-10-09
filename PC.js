@@ -52,51 +52,51 @@ $(window).load(function () {
             arrItems.push(value); // skubber værdier fra api'en ind i arrayet
         });
 
-         // opretter en tabel på siden og definere dens class.
-         var table = document.createElement("table");
-         table.setAttribute("class", "table");
- 
-         //opretter variablen tr (table row) og giver det en class.
-         var tr = table.insertRow(-1);
-         tr.className = 'table_head';
- 
+        // opretter en tabel på siden og definere dens class.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+
+        //opretter variablen tr (table row) og giver det en class.
+        var tr = table.insertRow(-1);
+        tr.className = 'table_head';
+
 
         //Her under oprettes table headersne
-         var th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "PC ID";
-         tr.appendChild(th);
-         var th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Mærke";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Model";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Reparation";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Reparation Text";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Reservedele";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Reservedele Text";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "OS";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Til Salg";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Solgt";
-         tr.appendChild(th);
-         th = document.createElement("th"); // TABLE HEADER.
-         th.innerHTML = "Skrottet";
-         tr.appendChild(th);
+        var th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "PC ID";
+        tr.appendChild(th);
+        var th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Mærke";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Model";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Reparation";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Reparation Text";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Reservedele";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Reservedele Text";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "OS";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Til Salg";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Solgt";
+        tr.appendChild(th);
+        th = document.createElement("th"); // TABLE HEADER.
+        th.innerHTML = "Skrottet";
+        tr.appendChild(th);
 
-         // for loopet her under køres indtil der ikke er flere PC'er i arrayet.
+        // for loopet her under køres indtil der ikke er flere PC'er i arrayet.
         for (var i = 0; i < arrItems.length; i++) {
 
             //tr2 tilføjes som en tabel række og sættes ind i tabelen som en række.
@@ -161,12 +161,12 @@ $(window).load(function () {
                 tabCell.innerHTML = "nej";
             }
         }
- 
- 
-         // der oprettes en variable divcontainer som kobles på tabeldiv.
-         var divContainer = document.getElementById("tabeldiv");
-         //divcontainer får koblet den tabel vi lige har oprettet på.
-         divContainer.appendChild(table);
+
+
+        // der oprettes en variable divcontainer som kobles på tabeldiv.
+        var divContainer = document.getElementById("tabeldiv");
+        //divcontainer får koblet den tabel vi lige har oprettet på.
+        divContainer.appendChild(table);
     });
 });
 
@@ -222,35 +222,35 @@ function rediger() {
 
 //get cookie funktionen med cname værdien som er overført fra checkcookie.
 function getCookie(cname) {
-	//variablen name oprettes.
-	var name = cname + "=";
-	//opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
-	var ca = document.cookie.split(';');
-	//køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
-	for (var i = 0; i < ca.length; i++) {
-		//variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
-		var c = ca[i];
-		//mens det første tegn i c er et mellem rum udfør nedenstående opgave.
-		while (c.charAt(0) == ' ') {
-			//c er nu lig med c's tidligere værdi minus det første tegn i variablen
-			c = c.substring(1)
-		}
-		//hvis variablen c indeholder variablen name ved start positionen.
-		if (c.indexOf(name) == 0) {
-			//så sendes resten af c retur
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
+    //variablen name oprettes.
+    var name = cname + "=";
+    //opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
+    var ca = document.cookie.split(';');
+    //køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
+    for (var i = 0; i < ca.length; i++) {
+        //variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
+        var c = ca[i];
+        //mens det første tegn i c er et mellem rum udfør nedenstående opgave.
+        while (c.charAt(0) == ' ') {
+            //c er nu lig med c's tidligere værdi minus det første tegn i variablen
+            c = c.substring(1)
+        }
+        //hvis variablen c indeholder variablen name ved start positionen.
+        if (c.indexOf(name) == 0) {
+            //så sendes resten af c retur
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 function checkCookie() {
-	//modtager user fra getcookie funktionen.
-	var type2 = getCookie("BrugerType");
-	//checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
-	if (type2 != "") {
-	//hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
-	} else {
-		window.location.replace("index.html");
-	}
+    //modtager user fra getcookie funktionen.
+    var type2 = getCookie("BrugerType");
+    //checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
+    if (type2 != "") {
+        //hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
+    } else {
+        window.location.replace("index.html");
+    }
 }

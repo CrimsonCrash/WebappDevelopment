@@ -20,6 +20,7 @@
 </head>
 
 <!--køre en funktion når body indlæses-->
+
 <body onload="page_load();">
 
 	<!--Navigations bar-->
@@ -38,7 +39,7 @@
 	<!--tabel-->
 	<div id="tabeldiv" class="responsiv"></div>
 
-	
+
 	<div>
 		<!--knappen i bunden af siden, som indeholder en drop down menu.-->
 		<div class="dropdown">
@@ -186,15 +187,16 @@
 							<input name="PCID" id="PC_ID_Rediger" type="text" class="input">
 						</p>
 						<!--opretter en paragraph som indeholder en label og et input felt-->
-						<p hidden>
-							<label class="label">Ansat</label>
-							<input id="ansat2" name="Ansat" type="text" class="input">
-						</p>
-						<!--opretter en paragraph som indeholder en label og et input felt-->
 						<p>
 							<label class="label">Ordrestatus</label>
 							<input name="OrdreStatus" id="OrdreStatus" type="text" class="input">
 						</p>
+						<!--opretter en paragraph som indeholder en label og et input felt-->
+						<p hidden>
+							<label class="label">Ansat</label>
+							<input id="ansat2" name="Ansat" type="text" class="input">
+						</p>
+
 						<p>
 							<!--knap som afsender formen til hjemmesiden som er defineret under form oprettelsen.-->
 							<button class="button" type="submit" value="Submit">Opdater</button>

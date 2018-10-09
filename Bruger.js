@@ -7,25 +7,25 @@ $(window).load(function () {
     checkCookie();
     //henter json fra et url
     $.getJSON("http://192.168.4.34:3000/Brugere", function (data) {
-        var arrItems = [];      // opretter et array til opbevarin af data
+        var arrItems = []; // opretter et array til opbevarin af data
         $.each(data, function (index, value) {
-            arrItems.push(value);       // dataen skubbes ind i arrayet
+            arrItems.push(value); // dataen skubbes ind i arrayet
         });
         // tilføj json data'en til hjemmesiden, i dette tilfælde tilføjes det til en ul = unordered list. Denne køres indtil der ikke er flere brugere i array'et
         for (var i = 0; i < arrItems.length; i++) {
 
             //opretter list item og giver den en klass og et id.
             li = document.createElement('li');
-            li.setAttribute('class','bar');
-            li.setAttribute('id',arrItems[i].Bruger_ID);
+            li.setAttribute('class', 'bar');
+            li.setAttribute('id', arrItems[i].Bruger_ID);
             //checker om bruger typen ikke er en bruger.
             if (type2 != "Bruger") {
                 //hvis brugertypen er Ejer oprettes en slet knap
-                if  (type2 == "Ejer") {
+                if (type2 == "Ejer") {
                     span = document.createElement('span');
                     span.innerHTML = "&times;";
-                    span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
-                    span.setAttribute("class","remove");
+                    span.setAttribute("onclick", "slet(" + arrItems[i].Bruger_ID + ")");
+                    span.setAttribute("class", "remove");
                     li.appendChild(span);
                 }
                 //checker om bruger typen ikke er ejer.
@@ -34,25 +34,25 @@ $(window).load(function () {
                     if (arrItems[i].Bruger_type != "Ejer") {
                         span = document.createElement('span');
                         span.innerHTML = "&times;";
-                        span.setAttribute("onclick","slet("+arrItems[i].Bruger_ID+")");
-                        span.setAttribute("class","remove");
+                        span.setAttribute("onclick", "slet(" + arrItems[i].Bruger_ID + ")");
+                        span.setAttribute("class", "remove");
                         li.appendChild(span);
                     }
                 }
             }
             //tilføjer et billede til list item'en.
             img = document.createElement('img');
-            img.setAttribute('src',arrItems[i].Bruger_type + '.png');
-            img.setAttribute('class','bar_item image');
+            img.setAttribute('src', arrItems[i].Bruger_type + '.png');
+            img.setAttribute('class', 'bar_item image');
             li.appendChild(img);
             //tilføjer et div til list item'en.
             div = document.createElement('div');
-            div.setAttribute('class','bar_item');
+            div.setAttribute('class', 'bar_item');
             li.appendChild(div);
             //tilføjer et span til list item'en.
             span2 = document.createElement('span');
             span2.innerHTML = arrItems[i].Navn;
-            span2.setAttribute("class","large");
+            span2.setAttribute("class", "large");
             div.appendChild(span2);
             //tilføjer et br til div'en
             br = document.createElement('br');
@@ -90,48 +90,48 @@ function slet(i) {
     if (r == true) {
         //skjul brugeren på siden og send slet anmodning til api'en
         document.getElementById(i).style.display = "none";
-        var url = "http://192.168.4.34:3000/Bruger/"+i;
+        var url = "http://192.168.4.34:3000/Bruger/" + i;
         $.ajax({
             url: url,
             method: 'DELETE'
         })
-    //hvis brugeren svare nej sker der ingenting.
+        //hvis brugeren svare nej sker der ingenting.
     } else {
-    
-    } 
+
+    }
 }
 
 //get cookie funktionen med cname værdien som er overført fra checkcookie.
 function getCookie(cname) {
-	//variablen name oprettes.
-	var name = cname + "=";
-	//opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
-	var ca = document.cookie.split(';');
-	//køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
-	for (var i = 0; i < ca.length; i++) {
-		//variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
-		var c = ca[i];
-		//mens det første tegn i c er et mellem rum udfør nedenstående opgave.
-		while (c.charAt(0) == ' ') {
-			//c er nu lig med c's tidligere værdi minus det første tegn i variablen
-			c = c.substring(1)
-		}
-		//hvis variablen c indeholder variablen name ved start positionen.
-		if (c.indexOf(name) == 0) {
-			//så sendes resten af c retur
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
+    //variablen name oprettes.
+    var name = cname + "=";
+    //opretter ca og opdeler cookien ved ; dette gøres for kun at få værdien før datoen.
+    var ca = document.cookie.split(';');
+    //køre cookien igennem et for der køre indtil i er lige så stort som ca er langt.
+    for (var i = 0; i < ca.length; i++) {
+        //variablen c skabes ud fra en lokation i ca, lokationen er defineret af i.
+        var c = ca[i];
+        //mens det første tegn i c er et mellem rum udfør nedenstående opgave.
+        while (c.charAt(0) == ' ') {
+            //c er nu lig med c's tidligere værdi minus det første tegn i variablen
+            c = c.substring(1)
+        }
+        //hvis variablen c indeholder variablen name ved start positionen.
+        if (c.indexOf(name) == 0) {
+            //så sendes resten af c retur
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 function checkCookie() {
-	//modtager user fra getcookie funktionen.
+    //modtager user fra getcookie funktionen.
     type2 = getCookie("BrugerType");
-	//checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
-	if (type2 != "") {
-	//hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
-	} else {
-		window.location.replace("index.html");
-	}
+    //checker om user værdien i cookien er udfyldt og hvis den er sker der ingenting
+    if (type2 != "") {
+        //hvis cookie værdien ikke er udfyldt stilles man tilbage til login siden
+    } else {
+        window.location.replace("index.html");
+    }
 }
