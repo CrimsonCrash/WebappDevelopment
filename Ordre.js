@@ -82,6 +82,12 @@ function rediger() {
         document.getElementById('Model').value = data[0].Model;
         document.getElementById('Mærke').value = data[0].Maerke;
         document.getElementById('PC_ID_Rediger').value = data[0].PC_ID;
+        if (data[0].Ordre_Status = "Annulleret") {
+            document.getElementById("Annulleret").checked = true;
+        } else {
+            document.getElementById("Gennemført").checked = true;
+        }
+
     });
     //skjuler den første rediger box og viser nummer 2.
     document.getElementById('Rediger_box').style.display = 'block';
