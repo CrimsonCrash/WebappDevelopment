@@ -90,7 +90,7 @@ $(window).load(function () {
         th.innerHTML = "Til Salg";
         tr.appendChild(th);
         th = document.createElement("th"); // TABLE HEADER.
-        th.innerHTML = "Solgt";
+        th.innerHTML = "Koblet på ordre";
         tr.appendChild(th);
         th = document.createElement("th"); // TABLE HEADER.
         th.innerHTML = "Skrottet";

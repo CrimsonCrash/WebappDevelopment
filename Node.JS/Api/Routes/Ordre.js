@@ -72,37 +72,20 @@ router.post("/Ordre_opret", (req, res) => {
     const pc_id = req.body.PC_ID
     const ansat = req.body.Ansat
 
-    //if der checker om pc_id er tomt
-    if (!req.body.PC_ID) {
-        //query string som afsendes til mysql serveren.
-        const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, null, ?)"
-        //commando der aktivere getconnection og afsender query til forbindelsen.
-        getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, ansat], (err, results, fields) => {
+    //query string som afsendes til mysql serveren.
+    const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, null, ?)"
+    //commando der aktivere getconnection og afsender query til forbindelsen.
+     getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, ansat], (err, results, fields) => {
             //fejl håndtering.
-            if (err) {
-                console.log("fejlede i at indsætte Ordre" + err)
-                res.sendStatus(500)
-                return
-            }
-            //hvis query'et virker videre stilles brugeren til siden han kom fra.
-            res.redirect('http://192.168.4.34/Ordre.html');
-        })
-        return
-    } else {
-        //query string som afsendes til mysql serveren.
-        const queryString = "Insert into Ordre (Navn, Email, Tlf, Adresse, Model, Maerke, PC_ID, Ansat) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-        //commando der aktivere getconnection og afsender query til forbindelsen.
-        getConnection().query(queryString, [navn, email, tlf, adresse, model, maerke, pc_id, ansat], (err, results, fields) => {
-            //fejl håndtering.
-            if (err) {
-                console.log("fejlede i at indsætte Ordre" + err)
-                res.sendStatus(500)
-                return
-            }
-            //hvis query'et virker videre stilles brugeren til siden han kom fra.
-            res.redirect('http://192.168.4.34/Ordre.html');
-        })
-    }
+        if (err) {
+            console.log("fejlede i at indsætte Ordre" + err)
+            res.sendStatus(500)
+            return
+        }
+        //hvis query'et virker videre stilles brugeren til siden han kom fra.
+        res.redirect('http://192.168.4.34/Ordre.html');
+    })
+    return 
 })
 
 //håndtere anmodninger til /Ordre_opdater
@@ -122,7 +105,7 @@ router.post("/Ordre_opdater", (req, res) => {
     const OrdreStatus = req.body.OrdreStatus
 
     //if der checker om pc_id er tomt
-    if (!req.body.PCID.lenght) {
+    if (!req.body.PCID) {
         //query string som afsendes til mysql serveren.
         const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = null, Ansat = " + ansat + ", Ordre_Status = '" + OrdreStatus + "' WHERE Ordre_ID = " + ordreid + ";";
         //commando der aktivere getconnection og afsender query til forbindelsen.
@@ -141,7 +124,21 @@ router.post("/Ordre_opdater", (req, res) => {
     }
     else {
         //query string som afsendes til mysql serveren.
-        const queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = " + ansat + ", Ordre_Status = '" + OrdreStatus + "' WHERE Ordre_ID = " + ordreid + ";";
+        var queryString = "UPDATE Ordre SET Navn = '" + navn + "', Email = '" + email + "', Tlf = '" + tlf + "', Adresse = '" + adresse + "', Model = '" + model + "', Maerke = '" + maerke + "', PC_ID = " + pcid + ", Ansat = " + ansat + ", Ordre_Status = '" + OrdreStatus + "' WHERE Ordre_ID = " + ordreid + ";";
+        //commando der aktivere getconnection og afsender query til forbindelsen.
+        getConnection().query(queryString, (err, results, fields) => {
+            //fejl håndtering.
+            if (err) {
+                console.log("fejlede i at indsætte Ordre" + err)
+                res.sendStatus(500)
+                return
+            }
+
+            console.log("querystring: " + queryString)
+            //hvis query'et virker videre stilles brugeren til siden han kom fra.
+        })
+        //query string som afsendes til mysql serveren.
+        queryString = "UPDATE PCer SET solgt = 1 WHERE PC_ID = '" + pcid + "';";
         //commando der aktivere getconnection og afsender query til forbindelsen.
         getConnection().query(queryString, (err, results, fields) => {
             //fejl håndtering.
