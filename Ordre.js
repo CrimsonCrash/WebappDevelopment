@@ -82,10 +82,17 @@ function rediger() {
         document.getElementById('Model').value = data[0].Model;
         document.getElementById('Mærke').value = data[0].Maerke;
         document.getElementById('PC_ID_Rediger').value = data[0].PC_ID;
-        if (data[0].Ordre_Status = "Annulleret") {
+        if (data[0].Ordre_Status == "Annulleret") {
             document.getElementById("Annulleret").checked = true;
-        } else {
+        } 
+        if (data[0].Ordre_Status == "Gennemført") {
             document.getElementById("Gennemført").checked = true;
+        }
+        if (data[0].Ordre_Status == "Behandles") {
+            document.getElementById("Behandles").checked = true;
+        }
+        if (data[0].Ordre_Status == "Venter") {
+            document.getElementById("Behandles").checked = true;
         }
 
     });
