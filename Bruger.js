@@ -106,20 +106,31 @@ function slet(i) {
     }
 }
 
+//validerings funktion til at checke om brugernavn allerede findes.
 function validate() {
+    //bruger dataen fra da brugerlisten blev indlæst (genbrug er godt) til at checke for om brugernavnet findes.
     for (var i = 0; i < arrItems.length; i++) {
+        //brugernavn sættes til at være lig med nuværende brugernavn.
         brugernavn = arrItems[i].Brugernavn;
+        //brugernavn 2 er det brugernavn som brugeren har indtastet i opret feltet.
         brugernavn2 = document.getElementById("brugernavn").value;
+        //sammenligner de 2 værdier med localecompare, der tages her højde for at der ikke er forskel på om brugernavnet er stort eller småt.
         var sammenligning = brugernavn.localeCompare(brugernavn2, 'da', {sensitivity: 'accent'});
+        //hvis sammenligning er 0 så er eksistere 0, dette gøres for at have en værdi vi kan checke nedenunder.
         if  (sammenligning == 0) {
             eksistere = 0;
         }
     }
+    //hvis eksistere var 0, så findes navnet allerede.
     if (eksistere == 0) {
+        //brugernavn 2 sættes til at være det navn som brugeren indtastede + et tilfældigt tal.
         brugernavn2 = brugernavn2+(Math.floor(Math.random() * 9000) + 1000);
+        //viser en alert med et forslag til et alternativt brugernavn.
         alert("der eksistere allerede en bruger med dette brugernavn, prøv i stedet med: " + brugernavn2)
+        //sender false tilbage så data'en ikke bliver submittet.
         return false;
     } else {
+        //sender true tilbage så data'en bliver submittet.
         return true;
     }
 }
